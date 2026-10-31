@@ -164,7 +164,7 @@ class Sheet:
                 sid = at(ws, self.sid_x[col])
                 if sid is not None and mux:
                     label = " ".join(t for x, t in ws if self.label_x <= x < self.lcn_x - 0.7 * self.h)
-                    out.append(dict(onid=mux[0], tsid=mux[1], sid=sid, label=label, lcn=int(lcn[0])))
+                    out.append({"onid": mux[0], "tsid": mux[1], "sid": sid, "label": label, "lcn": int(lcn[0])})
             elif sum(bool(HEX.match(t)) for _, t in ws) >= 3:
                 onid, tsid = at(ws, self.onid_x[col]), at(ws, self.tsid_x[col])
                 mux = (onid, tsid) if onid is not None and tsid is not None else None
