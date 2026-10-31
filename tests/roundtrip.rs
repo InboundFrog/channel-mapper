@@ -189,9 +189,9 @@ fn other_zip_entries_are_untouched() {
     assert_eq!(a.len(), b.len());
     for i in 0..a.len() {
         let mut ea = a.by_index_raw(i).unwrap();
-        let name = ea.name().to_string();
+        let name = ea.name().unwrap().to_string();
         let mut eb = b.by_index_raw(i).unwrap();
-        assert_eq!(name, eb.name(), "entry order changed");
+        assert_eq!(name, eb.name().unwrap(), "entry order changed");
         if name == "dvbt" {
             continue;
         }

@@ -66,7 +66,7 @@ impl ChannelArchive {
         let mut dbs = Vec::new();
         for i in 0..zip.len() {
             let mut entry = zip.by_index(i)?;
-            let name = entry.name().to_string();
+            let name = entry.name()?.to_string();
             // Samsung's databases have no extension and live at the top level.
             if name.contains('.') || name.contains('/') || name.contains('\\') || entry.is_dir() {
                 continue;
@@ -114,7 +114,7 @@ impl ChannelArchive {
         {
             let mut zout = ZipWriter::new(tmp.as_file());
             for i in 0..zin.len() {
-                let name = zin.by_index_raw(i)?.name().to_string();
+                let name = zin.by_index_raw(i)?.name()?.to_string();
                 if let Some(db) = self.dbs.iter().find(|d| d.entry == name) {
                     let bytes = std::fs::read(db.path())?;
                     let opts = SimpleFileOptions::default()
