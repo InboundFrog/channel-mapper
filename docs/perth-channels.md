@@ -82,6 +82,26 @@ to services by name. The IDs are from the export. Two adjustments:
    other way round (HD on 3, SD on 30), which implies 30 for HD on the
    mainland. After the swap above, that number goes to the SD copy.
 
+### Cross-check against Free TV's allocations
+
+Free TV Australia's OP-41 sets the number ranges each network may use
+([Issue 9, January 2024](https://www.freetv.com.au/wp-content/uploads/2024/02/Free-TV-OP-41-LCN-Descriptor-Issue-9-January-2024.pdf),
+Table 3). Every number in the Perth map falls inside its network's range:
+
+| Network | One digit | Two digits | Three digits | Perth map uses    |
+| ------- | --------- | ---------- | ------------ | ----------------- |
+| ABC     | 2         | 20–29      | 200–299      | 2, 20–29, 200–204 |
+| SBS     | 3         | 30–39      | 300–349      | 3, 30–36, 301–307 |
+| Seven   | 7         | 70–79      | 750–799      | 7, 70–78          |
+| Nine    | 9         | 90–99      | 950–999      | 9, 90–99          |
+| Ten     | 1         | 10–19      | 100–149      | 1, 10–17          |
+
+OP-41 gives Ten **1** as its single-digit number, which matches Wikipedia
+putting Ten's SD service on 1 and `10 HD` on 10. OP-41 doesn't say which service goes
+on which number inside a range, and says nothing about HD versus SD, so
+those choices come from Wikipedia and the adjustments above. Within its
+range, each broadcaster allocates numbers to its own services.
+
 ## Duplicates
 
 Several numbers carry the same programme:
@@ -124,6 +144,13 @@ says what's missing.
 
 ## Sources
 
+All read 31 October 2026. See also [sources.md](sources.md).
+
 - Wikipedia, [List of digital television channels in Australia](https://en.wikipedia.org/wiki/List_of_digital_television_channels_in_Australia),
-  metropolitan tables, read 31 October 2026
+  metropolitan tables (service-by-service numbers)
+- Free TV Australia,
+  [OP-41 Issue 9](https://www.freetv.com.au/wp-content/uploads/2024/02/Free-TV-OP-41-LCN-Descriptor-Issue-9-January-2024.pdf),
+  Table 3 (number ranges per network)
+- Free TV Australia, [DTTB Service Information Register](https://www.freetv.com.au/what-we-do/technology-innovation/),
+  Issue 16, June 2021 (service IDs for the untested city maps)
 - The export in `tests/fixtures/` (IDs, names, types, frequencies)

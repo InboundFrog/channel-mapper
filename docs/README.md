@@ -10,6 +10,7 @@ the tool; these files cover why it works the way it does.
 | [perth-channels.md](perth-channels.md)                           | Every service in the Perth export, with IDs, frequencies and the number tvmap gives it, plus the numbering decisions |
 | [tv-procedures.md](tv-procedures.md)                             | Exporting and importing on the TV, settings to change afterwards, and the channel-entry delay                        |
 | [verification.md](verification.md)                               | How the write path was checked before anything went near the TV                                                      |
+| [sources.md](sources.md)                                         | Every source used, grouped by topic, with what each one backs up, plus what's still unverified                       |
 
 Everything here comes from one TV: a UK UE40MU6400 on firmware
 T-KTMDEUC-1410.1, tuned in Perth in October 2026. Where a statement is a
