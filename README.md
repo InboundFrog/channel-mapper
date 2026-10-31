@@ -77,6 +77,20 @@ them) aren't in it, and IDs may have changed, so expect yellow rows: fix them
 in the editor and press `w`, and the saved map is right for your TV from then
 on. A tested map from another city is very welcome.
 
+To regenerate them from a newer issue of the register, download the four
+state sheets from Free TV's
+[Technology & Innovation](https://www.freetv.com.au/what-we-do/technology-innovation/)
+page and run (Python 3.11+, `pdftotext` from poppler):
+
+```sh
+tools/freetv_maps.py NSW-ACT.pdf QLD.pdf Vic-SA.pdf NT-WA-Tas.pdf
+git diff maps/
+```
+
+URLs work too. `--check` writes nothing and exits non-zero if a map would
+change. Once a city's map has been tested on a real TV, take it out of
+`CITIES` in the script so it isn't overwritten.
+
 ### Editor keys
 
 | Key                   |                                                         |
