@@ -137,6 +137,12 @@ The tests run against a real export (`tests/fixtures/`) and check exactly
 that: after applying, the only differing column in the whole database is
 the one meant to change.
 
+## Research notes
+
+[`docs/`](docs/README.md) has what we found along the way: why the TV uses
+the 800s, the export file format, every Perth service with its IDs, the TV
+procedures, and how the write path was verified.
+
 ## Credits
 
 The file format notes come from [ChanSort](https://github.com/PredatH0r/ChanSort)'s
