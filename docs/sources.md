@@ -31,7 +31,6 @@ on 31 October 2026. "Used for" says which claim each one backs.
 | Free TV Australia, [OP-41 Issue 8](https://www.freetv.com.au/op-41-lcn-descriptor-issue-8-july-2016) (July 2016)                                                                                                                      | The "DVB triple" (onid, tsid, sid); the descriptor comes from the UK's DTG                                                        |
 | Free TV Australia, [OP-40 Issue 4](https://www.freetv.com.au/wp-content/uploads/2019/08/OP-40-Allocation-of-DVB-Service-Information-Codes-Issue-4-Sept-2017-v2..pdf) (September 2017)                                                 | How network IDs and other DVB codes are allocated in Australia                                                                    |
 | Free TV Australia, [DTTB Service Information Register introduction](https://www.freetv.com.au/wp-content/uploads/2021/09/Free-TV-Australia-DTTB-Service-Information-Register-Ver-18-September-2021-Introduction.pdf) (September 2021) | The DTG granted permission to use its descriptor in Australia                                                                     |
-| Free TV Australia, [DTTB Service Information Register](https://www.freetv.com.au/what-we-do/technology-innovation/) (Issue 16, June 2021)                                                                                             | Service IDs for the untested city maps                                                                                            |
 | [TSDuck: DTG logical_channel_descriptor](https://tsduck.io/doxy/d6/dd0/tsDTGLogicalChannelDescriptor_8h.html)                                                                                                                         | The UK descriptor is private and needs the DTG/Ofcom private data specifier                                                       |
 | [TSDuck: Australia logical_channel_descriptor](https://tsduck.io/doxy/df/d0c/tsAustraliaLogicalChannelDescriptor_8h.html)                                                                                                             | TSDuck's model of the Australian descriptor (disagrees with OP-41 on the private data specifier)                                  |
 | [ffmpeg-devel, May 2021](https://ffmpeg.org/pipermail/ffmpeg-devel/2021-May/280305.html)                                                                                                                                              | Private data specifier per country: UK `0x0000233A`, Europe `0x00000028`, Nordig `0x00000029`, Australia none                     |
@@ -62,6 +61,17 @@ on 31 October 2026. "Used for" says which claim each one backs.
 | [mythtv-dev, December 2005](https://lists.mythtv.org/pipermail/mythtv-dev/2005-December/042205.html)                                          | Meanings of `0x11`, `0x16`, `0x19`, `0x0A`; "advanced codec" means H.264 |
 | [MythTV service type constants](https://code.mythtv.org/doxygen/classServiceDescriptorMapping.html)                                           | The same values as code                                                  |
 
+## Other cities
+
+| Source                                                                                                                                                                                                                                                            | Used for                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Free TV Australia, DTTB Service Information Register [Issue 16](https://www.freetv.com.au/wp-content/uploads/2021/06/Free-TV-Australia-DTTB-Service-Information-Register-Ver-16-June-2021-NSW-ACT-.pdf) (June 2021), state sheets NSW-ACT, QLD, Vic-SA, NT-WA-Tas | Service IDs and LCNs for the untested city maps; Perth column checked against the export (5/5 multiplexes, 46/58 services) |
+| Free TV Australia, DTTB Service Information Register [Issue 16 introduction](https://www.freetv.com.au/wp-content/uploads/2021/06/Free-TV-Australia-DTTB-Service-Information-Register-Ver-16-June-2021-Introduction-.pdf)                                         | The register is meant for broadcasters, and its values may change                                                          |
+| Free TV Australia, DTTB Service Information Register [Issue 18](https://www.freetv.com.au/wp-content/uploads/2021/09/Free-TV-Australia-DTTB-Service-Information-Register-Ver-18-September-2021-NSW-ACT.pdf) (September 2021, draft), same four sheets             | The newest issue we found; differs from Issue 16 in three places, none changing a guide number                             |
+| David Zou, [Sydney Digital TV (DVB-T)](https://davidzou.com/articles/sydney-digital-tv-dvb-t) (December 2015)                                                                                                                                                     | Sydney's five multiplexes (ONID/TSID) and four SBS service IDs match the register                                          |
+
+All sheet links are in [city-maps.md](city-maps.md).
+
 ## Not verified
 
 - **Which tuner chip the UE40MU6400 uses.** The datasheets show what's
@@ -72,3 +82,5 @@ on 31 October 2026. "Used for" says which claim each one backs.
   the firmware.
 - **SBS HD's mainland number.** Wikipedia doesn't state it; we inferred it
   from the Tasmanian note.
+- **The city maps.** None has been tried on a TV, and the register is from
+  2021. See [city-maps.md](city-maps.md#not-verified).

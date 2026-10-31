@@ -140,7 +140,8 @@ showing. On the TV, Info shows which copy is on screen.
 The maps for the other capitals (`maps/au/<state>/`) are untested. Their
 service IDs come from Free TV Australia's DTTB Service Information
 Register (Issue 16, June 2021), not from a real export. Each one's header
-says what's missing.
+says what's missing. [city-maps.md](city-maps.md) has the details,
+including how the register's Perth column compares with this export.
 
 ## Sources
 
