@@ -86,12 +86,16 @@ NETWORK = {
 
 HEX = re.compile(r"^[0-9A-F]{3,4}$")
 WORD = re.compile(
-    r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="[\d.]+" yMax="[\d.]+">(.*?)</word>'
+    r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="[\d.]+" yMax="([\d.]+)">(.*?)</word>'
 )
 
 
 class Sheet:
-    """One register PDF, as rows of (x, text) words."""
+    """One register PDF, as rows of (x, text) words.
+
+    Issues are rendered at different scales (Issue 18 is about half the size
+    of Issue 16), so every distance is a multiple of the median word height.
+    """
 
     def __init__(self, pdf):
         out = subprocess.run(
@@ -100,12 +104,13 @@ class Sheet:
             capture_output=True,
             text=True,
         ).stdout
-        words = sorted(
-            (float(y), float(x), html.unescape(t)) for x, y, t in WORD.findall(out)
-        )
+        found = WORD.findall(out)
+        heights = sorted(float(y1) - float(y0) for _, y0, y1, _ in found)
+        self.h = h = heights[len(heights) // 2]
+        words = sorted((float(y), float(x), html.unescape(t)) for x, y, _, t in found)
         self.rows = []
         for y, x, t in words:
-            if self.rows and y - self.rows[-1][0] < 3:
+            if self.rows and y - self.rows[-1][0] < 0.4 * h:
                 self.rows[-1][1].append((x, t))
             else:
                 self.rows.append([y, [(x, t)]])
@@ -116,7 +121,8 @@ class Sheet:
         m = re.search(r"Issue:?\s*(\d+)\s+Date\s*:?\s*(\w+ \d{4})", text)
         self.issue = f"Issue {m[1]} ({m[2]})" if m else "unknown issue"
 
-        # Header: "ONID .. TSID" per market on one row, "NID .. SID" on the next.
+        # Header: "ONID .. TSID" per market, with "NID .. SID" on the same row
+        # (Issue 18) or the next (Issue 16).
         self.header = next(
             i for i, (_, ws) in enumerate(self.rows) if sum(t == "ONID" for _, t in ws) > 3
         )
@@ -126,33 +132,37 @@ class Sheet:
         self.tsid_x = [x for x, t in top if t == "TSID"]
         self.sid_x = [x for x, t in sub if t == "SID"]
         self.lcn_x = next(x for x, t in top if t == "LCN")
-        service_x = next(
-            dict((t, x) for x, t in ws)["Service"]
-            for _, ws in self.rows
-            if any(t == "Broadcaster" for _, t in ws)
+        # "Service Name" heads the label column. It's usually on the
+        # "Broadcaster" row, but not always (Issue 18, NT-WA-Tas).
+        b = next(i for i, (_, ws) in enumerate(self.rows) if any(t == "Broadcaster" for _, t in ws))
+        service_x = min(
+            x
+            for _, ws in self.rows[max(0, b - 3) : b + 4]
+            for x, t in ws
+            if t == "Service" and x < self.lcn_x
         )
-        self.label_x = service_x - 30  # left of this is the broadcaster column
+        self.label_x = service_x - 4 * h  # left of this is the broadcaster column
 
     def column(self, market):
         """Index of the market's column, from its name in the header."""
         for _, ws in self.rows[: self.header]:
             for x, t in ws:
                 if t == market:
-                    return max(i for i, ox in enumerate(self.onid_x) if ox <= x + 5)
+                    return max(i for i, ox in enumerate(self.onid_x) if ox <= x + 0.7 * self.h)
         return None
 
     def services(self, col):
         def at(ws, x):
-            hit = [t for wx, t in ws if abs(wx - x) < 22 and HEX.match(t)]
+            hit = [t for wx, t in ws if abs(wx - x) < 3 * self.h and HEX.match(t)]
             return int(hit[0], 16) if hit else None
 
         mux, out = None, []
         for _, ws in self.rows[self.header + 1 :]:
-            lcn = [t for x, t in ws if abs(x - self.lcn_x) < 15 and t.isdigit()]
+            lcn = [t for x, t in ws if abs(x - self.lcn_x) < 2 * self.h and t.isdigit()]
             if lcn:
                 sid = at(ws, self.sid_x[col])
                 if sid is not None and mux:
-                    label = " ".join(t for x, t in ws if self.label_x <= x < self.lcn_x - 5)
+                    label = " ".join(t for x, t in ws if self.label_x <= x < self.lcn_x - 0.7 * self.h)
                     out.append(dict(onid=mux[0], tsid=mux[1], sid=sid, label=label, lcn=int(lcn[0])))
             elif sum(bool(HEX.match(t)) for _, t in ws) >= 3:
                 onid, tsid = at(ws, self.onid_x[col]), at(ws, self.tsid_x[col])
