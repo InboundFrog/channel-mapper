@@ -16,7 +16,7 @@ fn fixture() -> PathBuf {
 fn perth_map() -> MapFile {
     MapFile::load(Path::new(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/maps/perth.toml"
+        "/maps/au/wa/perth.toml"
     )))
     .unwrap()
 }

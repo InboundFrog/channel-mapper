@@ -14,6 +14,8 @@ fn normalises_names() {
     assert_eq!(normalise("7two Perth"), "7two");
     assert_eq!(normalise("9Go!HD Perth"), "9gohd");
     assert_eq!(normalise("ABC Kids/ABC Family"), "abckidsabcfamily");
+    assert_eq!(normalise("7two Sydney"), "7two");
+    assert_eq!(normalise("Channel 9 Darwin"), "channel9");
 }
 
 #[test]
@@ -28,9 +30,34 @@ fn similar_names() {
 
 #[test]
 fn perth_map_is_valid() {
-    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/maps/perth.toml");
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/maps/au/wa/perth.toml");
     let m = MapFile::load(std::path::Path::new(path)).unwrap();
     assert_eq!(m.channels.len(), 58);
+}
+
+#[test]
+fn bundled_maps_are_valid() {
+    fn walk(dir: &std::path::Path, found: &mut Vec<std::path::PathBuf>) {
+        for e in std::fs::read_dir(dir).unwrap() {
+            let p = e.unwrap().path();
+            if p.is_dir() {
+                walk(&p, found);
+            } else if p.extension().is_some_and(|x| x == "toml") {
+                found.push(p);
+            }
+        }
+    }
+    let mut maps = Vec::new();
+    walk(
+        std::path::Path::new(concat!(env!("CARGO_MANIFEST_DIR"), "/maps")),
+        &mut maps,
+    );
+    assert_eq!(maps.len(), 8, "{maps:?}");
+    for p in maps {
+        let m = MapFile::load(&p).unwrap_or_else(|e| panic!("{e:#}"));
+        assert!(m.region.is_some(), "{}", p.display());
+        assert!(!m.channels.is_empty(), "{}", p.display());
+    }
 }
 
 #[test]

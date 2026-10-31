@@ -1,0 +1,361 @@
+# Adelaide, SA free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Adelaide. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Adelaide, SA"
+
+# --- ABC (onid 4112, tsid 593) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 593
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 592
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 595
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 594
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 596
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 598
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 593
+sid = 599
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 832) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 833
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 837
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 838
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 839
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 835
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 836
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 849
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 850
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 851
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 852
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 853
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 854
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 832
+sid = 855
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Seven (onid 4115, tsid 1285) ----------------------------------------
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1360
+name = "7 Adelaide"
+number = 7
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1364
+name = "7 Adelaide"
+number = 71
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1361
+name = "7 Adelaide"
+number = 70
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1362
+name = "7two Adelaide"
+number = 72
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1367
+name = "7mate Adelaide"
+number = 74
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1366
+name = "7Bravo Adelaide"
+number = 75
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1365
+name = "7flix Adelaide"
+number = 76
+
+[[channel]]
+onid = 4115
+tsid = 1285
+sid = 1368
+name = "RACING.COM"
+number = 78
+
+
+# --- Nine (onid 4114, tsid 1104) -----------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1105
+name = "Channel 9 Adelaide"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1106
+name = "9HD Adelaide"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1110
+name = "9HD Adelaide"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1111
+name = "9GemHD Adelaide"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1112
+name = "9Go!HD Adelaide"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1108
+name = "9LifeHD Adelaide"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1109
+name = "9GemHD Adelaide"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1113
+name = "9Rush Adelaide"
+number = 96
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1114
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1104
+sid = 1107
+name = "9Go!HD Adelaide"
+number = 99
+
+
+# --- Ten (onid 4116, tsid 1541) ------------------------------------------
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1617
+name = "10 HD"
+number = 10
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1621
+name = "10"
+number = 1
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1620
+name = "10 HD"
+number = 15
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1623
+name = "10 drama"
+number = 12
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1624
+name = "10 comedy"
+number = 11
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1622
+name = "you.tv"
+number = 16
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1625
+name = "gecko"
+number = 17
+
+[[channel]]
+onid = 4116
+tsid = 1541
+sid = 1619
+name = "Nickelodeon"
+number = 13
+
+
+# --- Community (44) (onid 12852, tsid 3584) ------------------------------
+[[channel]]
+onid = 12852
+tsid = 3584
+sid = 3585
+name = "44 Adelaide"
+number = 44

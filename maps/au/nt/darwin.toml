@@ -1,0 +1,375 @@
+# Darwin, NT free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Darwin. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Darwin, NT"
+
+# --- ABC (onid 4112, tsid 641) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 641
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 640
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 643
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 642
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 644
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 646
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 641
+sid = 647
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 864) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 865
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 869
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 870
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 871
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 867
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 868
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 881
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 882
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 883
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 884
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 885
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 886
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 864
+sid = 887
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Southern Cross (7) (onid 12811, tsid 2305) --------------------------
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2305
+name = "7 Darwin"
+number = 70
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2529
+name = "7HD Darwin"
+number = 7
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2497
+name = "7 Darwin"
+number = 71
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2369
+name = "7TWO"
+number = 72
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2337
+name = "7Mate"
+number = 73
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2401
+name = "SBN"
+number = 74
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2433
+name = "TVSN"
+number = 75
+
+[[channel]]
+onid = 12811
+tsid = 2305
+sid = 2465
+name = "RACING.COM"
+number = 78
+
+
+# --- Southern Cross / DDT (10) (onid 12812, tsid 2074) -------------------
+[[channel]]
+onid = 12812
+tsid = 2074
+sid = 2074
+name = "10 DDT"
+number = 1
+
+[[channel]]
+onid = 12812
+tsid = 2074
+sid = 2202
+name = "10HD DDT"
+number = 10
+
+[[channel]]
+onid = 12812
+tsid = 2074
+sid = 2170
+name = "10 DDT"
+number = 11
+
+[[channel]]
+onid = 12812
+tsid = 2074
+sid = 2106
+name = "10 Bold"
+number = 12
+
+[[channel]]
+onid = 12812
+tsid = 2074
+sid = 2138
+name = "10 Peach"
+number = 13
+
+
+# --- Nine (onid 4114, tsid 1792) -----------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1793
+name = "Channel 9 Darwin"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1794
+name = "9HD Darwin"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1798
+name = "9HD Darwin"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1799
+name = "9GemHD Darwin"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1795
+name = "9Go!HD Darwin"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1796
+name = "9LifeHD Darwin"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1797
+name = "9GemHD Darwin"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1801
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1792
+sid = 1800
+name = "9Go!HD Darwin"
+number = 99
+
+
+# --- Larrakia / community (onid 12975, tsid 3071) ------------------------
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2817
+name = "Larrakia TV"
+number = 41
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2818
+name = "Tourism TV"
+number = 42
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2819
+name = "Education TV"
+number = 43
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2820
+name = "TV NT"
+number = 44
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2833
+name = "Larrakia Radio"
+number = 401
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2834
+name = "AIR Radio"
+number = 402
+
+[[channel]]
+onid = 12975
+tsid = 3071
+sid = 2835
+name = "Darwin FM"
+number = 403

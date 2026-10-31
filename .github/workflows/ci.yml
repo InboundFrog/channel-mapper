@@ -25,8 +25,8 @@ jobs:
         shell: bash
         run: |
           set -e
-          ci/run.sh cargo run --quiet -- list tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip --map maps/perth.toml
-          ci/run.sh cargo run --quiet -- apply tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip --map maps/perth.toml -o tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --save-map tvmap-out/channel-map.toml
+          ci/run.sh cargo run --quiet -- list tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip --map maps/au/wa/perth.toml
+          ci/run.sh cargo run --quiet -- apply tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip --map maps/au/wa/perth.toml -o tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --save-map tvmap-out/channel-map.toml
           ci/run.sh cargo run --quiet -- list tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --map tvmap-out/channel-map.toml
           # No --map: falls back to tvmap-out/channel-map.toml.
           ci/run.sh cargo run --quiet -- list tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip

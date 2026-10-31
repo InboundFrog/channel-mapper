@@ -1,0 +1,310 @@
+# Hobart, Tas free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Hobart. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Hobart, Tas"
+
+# --- ABC (onid 4112, tsid 625) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 625
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 624
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 627
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 626
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 628
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 630
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 625
+sid = 631
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 896) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 897
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 901
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 902
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 903
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 899
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 900
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 913
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 914
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 915
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 916
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 917
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 918
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 896
+sid = 919
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Southern Cross (7) (onid 12811, tsid 2306) --------------------------
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2306
+name = "7 Hobart"
+number = 60
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2304
+name = "7HD Hobart"
+number = 6
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2498
+name = "7 Hobart"
+number = 61
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2370
+name = "7TWO"
+number = 62
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2338
+name = "7Mate"
+number = 63
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2402
+name = "SBN"
+number = 64
+
+[[channel]]
+onid = 12811
+tsid = 2306
+sid = 2466
+name = "RACING.COM"
+number = 68
+
+
+# --- Southern Cross / DDT (10) (onid 12812, tsid 2071) -------------------
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2071
+name = "10 Tas"
+number = 50
+
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2199
+name = "10 HD Tas"
+number = 5
+
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2167
+name = "10 Tas"
+number = 51
+
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2103
+name = "10 Peach"
+number = 52
+
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2135
+name = "10 BOLD"
+number = 53
+
+[[channel]]
+onid = 12812
+tsid = 2071
+sid = 2231
+name = "10 SHAKE"
+number = 54
+
+
+# --- WIN (9) (onid 12917, tsid 12922) ------------------------------------
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1921
+name = "9SD"
+number = 80
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1944
+name = "9HD"
+number = 8
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1922
+name = "9Gem"
+number = 81
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1926
+name = "9Go!"
+number = 82
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1936
+name = "9Life"
+number = 83
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1928
+name = "TVSN"
+number = 84
+
+[[channel]]
+onid = 12917
+tsid = 12922
+sid = 1927
+name = "GOLD"
+number = 85

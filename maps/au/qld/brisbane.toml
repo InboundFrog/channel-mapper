@@ -1,0 +1,361 @@
+# Brisbane, Qld free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Brisbane. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Brisbane, Qld"
+
+# --- ABC (onid 4112, tsid 577) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 577
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 576
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 579
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 578
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 580
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 582
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 577
+sid = 583
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 816) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 817
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 821
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 822
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 823
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 819
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 820
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 833
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 834
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 835
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 836
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 837
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 838
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 816
+sid = 839
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Seven (onid 4115, tsid 1284) ----------------------------------------
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1344
+name = "7 Brisbane"
+number = 7
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1348
+name = "7 Brisbane"
+number = 71
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1345
+name = "7 Brisbane"
+number = 70
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1346
+name = "7two Brisbane"
+number = 72
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1351
+name = "7mate Brisbane"
+number = 74
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1350
+name = "7Bravo Brisbane"
+number = 75
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1349
+name = "7flix Brisbane"
+number = 76
+
+[[channel]]
+onid = 4115
+tsid = 1284
+sid = 1352
+name = "RACING.COM"
+number = 78
+
+
+# --- Nine (onid 4114, tsid 1024) -----------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1025
+name = "Channel 9 Brisbane"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1152
+name = "9HD Brisbane"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1033
+name = "9HD Brisbane"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1034
+name = "9GemHD Brisbane"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1030
+name = "9Go!HD Brisbane"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1031
+name = "9LifeHD Brisbane"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1032
+name = "9GemHD Brisbane"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1036
+name = "9Rush Brisbane"
+number = 96
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1037
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1024
+sid = 1035
+name = "9Go!HD Brisbane"
+number = 99
+
+
+# --- Ten (onid 4116, tsid 1540) ------------------------------------------
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1601
+name = "10 HD"
+number = 10
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1605
+name = "10"
+number = 1
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1604
+name = "10 HD"
+number = 15
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1607
+name = "10 drama"
+number = 12
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1608
+name = "10 comedy"
+number = 11
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1606
+name = "you.tv"
+number = 16
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1609
+name = "gecko"
+number = 17
+
+[[channel]]
+onid = 4116
+tsid = 1540
+sid = 1603
+name = "Nickelodeon"
+number = 13
+
+
+# --- Community (31) (onid 12842, tsid 3584) ------------------------------
+[[channel]]
+onid = 12842
+tsid = 3584
+sid = 3585
+name = "31 Digital"
+number = 44
