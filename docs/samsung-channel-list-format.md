@@ -80,16 +80,28 @@ leaves favourites alone.
 
 ### Identifying a service
 
-`(SRV_DVB.onid, SRV.tsid, SRV.progNum)` identifies a broadcast service
-uniquely, and comes from the broadcast itself, so it should survive a
-rescan. `srvId` is the TV's own row key. We haven't tested whether a rescan
-changes it, so tvmap only uses it within a single file, never in a map.
+`(SRV_DVB.onid, SRV.tsid, SRV.progNum)` is the "DVB triple": original
+network ID, transport stream ID and service ID. In Australia these values
+are allocated to broadcasters under Free TV's OP-40, and OP-41 describes a
+service by the same triple
+([OP-40](https://www.freetv.com.au/wp-content/uploads/2019/08/OP-40-Allocation-of-DVB-Service-Information-Codes-Issue-4-Sept-2017-v2..pdf);
+[OP-41 Issue 8](https://www.freetv.com.au/op-41-lcn-descriptor-issue-8-july-2016)).
+It comes from the broadcast itself, so it should survive a rescan. `srvId`
+is the TV's own row key. We haven't tested whether a rescan changes it, so
+tvmap only uses it within a single file, never in a map.
 
 Names are **not** unique. Perth has three services called `7 Perth`, and
 two each of `9HD Perth`, `9GemHD Perth`, `9Go!HD Perth`, `10 HD` and
 `ABC TV`.
 
 ### Service types seen
+
+`srvType` is the DVB `service_type` from the service descriptor, defined in
+ETSI EN 300 468 (the annex on assigning `service_type`). "Advanced codec"
+means H.264
+([EN 300 468 V1.8.1 contents](https://iteh.es/catalog/standards/etsi/27066f04-432d-4487-a84a-0b5d93237196/etsi-en-300-468-v1-8-1-2008-07);
+[MythTV's list of the values](https://lists.mythtv.org/pipermail/mythtv-dev/2005-December/042205.html);
+[MythTV service type constants](https://code.mythtv.org/doxygen/classServiceDescriptorMapping.html)).
 
 | `srvType` | DVB meaning                     | Count |
 | --------: | ------------------------------- | ----: |
@@ -147,7 +159,19 @@ the Perth map changes `SRV.major` and nothing else. See
 
 ## Sources
 
+All read 31 October 2026. See also [sources.md](sources.md).
+
 - ChanSort, `source/ChanSort.Loader.Samsung/Zip/DbSerializer.cs` (queries,
   update statements, `REINDEX`, the name-encoding notes) and `DbChannel.cs`
   (column meanings): <https://github.com/PredatH0r/ChanSort>
 - Our own inspection of the export (`tests/fixtures/`)
+- Free TV Australia
+  [OP-40](https://www.freetv.com.au/wp-content/uploads/2019/08/OP-40-Allocation-of-DVB-Service-Information-Codes-Issue-4-Sept-2017-v2..pdf)
+  (DVB service information codes) and
+  [OP-41 Issue 8](https://www.freetv.com.au/op-41-lcn-descriptor-issue-8-july-2016)
+  (the DVB triple)
+- ETSI EN 300 468 (`service_type` values), via the
+  [standard's contents page](https://iteh.es/catalog/standards/etsi/27066f04-432d-4487-a84a-0b5d93237196/etsi-en-300-468-v1-8-1-2008-07)
+  and [MythTV's summary](https://lists.mythtv.org/pipermail/mythtv-dev/2005-December/042205.html)
+- [Samsung Community thread](https://eu.community.samsung.com/t5/tv/channel-editing-transfer-channel-list/td-p/364538/page/2)
+  on Transfer Channel List appearing after a reset and full scan
