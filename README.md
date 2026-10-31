@@ -62,6 +62,21 @@ instead of the built-in Perth map.
 Yellow rows need a look, red rows share a number with another row. tvmap
 won't write while any number is used twice.
 
+## Tested on
+
+| TV | Firmware | Region | Result |
+|---|---|---|---|
+| UE40MU6400 (UK model) | T-KTMDEUC-1410.1 | Perth, WA | Works. All 58 services renumbered. |
+
+Notes from that TV:
+
+- It reboots after **Import from USB**. That's normal; the new numbers are
+  there when it comes back.
+- Turn off **stand-by auto-tune** (Broadcasting settings) afterwards,
+  otherwise the TV can rescan overnight and put everything back in the 800s.
+- The UK firmware tunes Australian VHF channels fine (all five Perth
+  multiplexes are on VHF 6–12). Only the numbering is wrong.
+
 ## How matching works
 
 Each broadcast service is identified by original network ID, transport
