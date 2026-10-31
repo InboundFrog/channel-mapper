@@ -27,8 +27,9 @@ fn similar_names() {
 }
 
 #[test]
-fn built_in_map_is_valid() {
-    let m = MapFile::perth();
+fn perth_map_is_valid() {
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/maps/perth.toml");
+    let m = MapFile::load(std::path::Path::new(path)).unwrap();
     assert_eq!(m.channels.len(), 58);
 }
 

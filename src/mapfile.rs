@@ -5,9 +5,6 @@ use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
-/// Built-in map for Perth, WA.
-pub const PERTH: &str = include_str!("../maps/perth.toml");
-
 #[derive(Debug, Clone, Default, Deserialize, Serialize)]
 pub struct MapFile {
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -57,10 +54,6 @@ impl MapFile {
         let text =
             std::fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
         Self::parse(&text).with_context(|| format!("in {}", path.display()))
-    }
-
-    pub fn perth() -> Self {
-        Self::parse(PERTH).expect("built-in Perth map is valid")
     }
 
     pub fn save(&self, path: &Path) -> Result<()> {
