@@ -425,8 +425,10 @@ mod tests {
             region: None,
             plan: Plan::build(
                 services,
-                &MapFile::load(&PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("maps/perth.toml"))
-                    .unwrap(),
+                &MapFile::load(
+                    &PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("maps/au/wa/perth.toml"),
+                )
+                .unwrap(),
             ),
         })
     }

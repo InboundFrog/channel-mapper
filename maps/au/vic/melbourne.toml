@@ -1,0 +1,361 @@
+# Melbourne, Vic free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Melbourne. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Melbourne, Vic"
+
+# --- ABC (onid 4112, tsid 561) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 561
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 560
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 563
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 562
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 564
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 566
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 561
+sid = 567
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 784) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 785
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 789
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 790
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 791
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 787
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 788
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 801
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 802
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 803
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 804
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 805
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 806
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 784
+sid = 807
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Seven (onid 4115, tsid 1283) ----------------------------------------
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1328
+name = "7 Melbourne"
+number = 7
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1332
+name = "7 Melbourne"
+number = 71
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1329
+name = "7 Melbourne"
+number = 70
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1330
+name = "7two Melbourne"
+number = 72
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1335
+name = "7mate Melbourne"
+number = 74
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1334
+name = "7Bravo Melbourne"
+number = 75
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1333
+name = "7flix Melbourne"
+number = 76
+
+[[channel]]
+onid = 4115
+tsid = 1283
+sid = 1336
+name = "RACING.COM"
+number = 78
+
+
+# --- Nine (onid 4114, tsid 1072) -----------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1072
+name = "Channel 9 Melbourne"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1073
+name = "9HD Melbourne"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1077
+name = "9HD Melbourne"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1078
+name = "9GemHD Melbourne"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1079
+name = "9Go!HD Melbourne"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1075
+name = "9LifeHD Melbourne"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1076
+name = "9GemHD Melbourne"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1080
+name = "9Rush Melbourne"
+number = 96
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1081
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1072
+sid = 1074
+name = "9Go!HD Melbourne"
+number = 99
+
+
+# --- Ten (onid 4116, tsid 1539) ------------------------------------------
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1585
+name = "10 HD"
+number = 10
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1589
+name = "10"
+number = 1
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1588
+name = "10 HD"
+number = 15
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1591
+name = "10 drama"
+number = 12
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1592
+name = "10 comedy"
+number = 11
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1590
+name = "you.tv"
+number = 16
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1593
+name = "gecko"
+number = 17
+
+[[channel]]
+onid = 4116
+tsid = 1539
+sid = 1587
+name = "Nickelodeon"
+number = 13
+
+
+# --- Community (C31) (onid 12832, tsid 3584) -----------------------------
+[[channel]]
+onid = 12832
+tsid = 3584
+sid = 3585
+name = "C31"
+number = 44

@@ -53,7 +53,7 @@ enum Cmd {
 struct Common {
     /// The Channel_list_*.zip exported from the TV.
     zip: PathBuf,
-    /// Channel map (TOML), e.g. maps/perth.toml. Default: tvmap-out/channel-map.toml.
+    /// Channel map (TOML), e.g. maps/au/wa/perth.toml. Default: tvmap-out/channel-map.toml.
     #[arg(short, long, conflicts_with = "empty")]
     map: Option<PathBuf>,
     /// Start from an empty map.
@@ -74,7 +74,7 @@ impl Common {
         }
         let p = Path::new(DEFAULT_MAP);
         if !p.exists() {
-            bail!("no channel map: pass --map FILE (e.g. maps/perth.toml), or --empty to start from nothing");
+            bail!("no channel map: pass --map FILE (e.g. maps/au/wa/perth.toml), or --empty to start from nothing");
         }
         eprintln!("using map {}", p.display());
         MapFile::load(p)

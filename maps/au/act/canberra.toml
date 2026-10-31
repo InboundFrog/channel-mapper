@@ -1,0 +1,331 @@
+# Canberra, ACT free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Canberra. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Canberra, ACT"
+
+# --- ABC (onid 4112, tsid 529) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 529
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 528
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 531
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 530
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 532
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 534
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 529
+sid = 535
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 848) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 849
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 853
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 854
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 855
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 851
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 852
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 865
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 866
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 867
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 868
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 869
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 870
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 848
+sid = 871
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Southern Cross / DDT (10) (onid 12812, tsid 2055) -------------------
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2055
+name = "10 Canberra"
+number = 50
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2247
+name = "10 HD Canberra"
+number = 5
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2215
+name = "10 Canberra"
+number = 51
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2087
+name = "10 Peach"
+number = 52
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2119
+name = "10 BOLD"
+number = 53
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2279
+name = "10 SHAKE"
+number = 54
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2151
+name = "SBN"
+number = 55
+
+[[channel]]
+onid = 12812
+tsid = 2055
+sid = 2183
+name = "Aspire"
+number = 56
+
+
+# --- Prime7 (onid 12929, tsid 2462) --------------------------------------
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2374
+name = "PRIME7 Canberra"
+number = 60
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2400
+name = "PRIME7 HD Canberra"
+number = 6
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2401
+name = "PRIME7 Canberra"
+number = 61
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2402
+name = "7TWO Canberra"
+number = 62
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2403
+name = "7mate Canberra"
+number = 63
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2405
+name = "ishoptv"
+number = 65
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2406
+name = "7flix"
+number = 66
+
+[[channel]]
+onid = 12929
+tsid = 2462
+sid = 2408
+name = "RACING.COM"
+number = 68
+
+
+# --- WIN (9) (onid 12915, tsid 12922) ------------------------------------
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1921
+name = "9SD"
+number = 80
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1939
+name = "9HD"
+number = 8
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1922
+name = "9Gem"
+number = 81
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1926
+name = "9Go!"
+number = 82
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1936
+name = "9Life"
+number = 83
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1928
+name = "TVSN"
+number = 84
+
+[[channel]]
+onid = 12915
+tsid = 12922
+sid = 1927
+name = "GOLD"
+number = 85

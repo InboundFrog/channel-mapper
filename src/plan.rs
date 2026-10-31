@@ -65,6 +65,18 @@ impl Row {
     }
 }
 
+/// Cities broadcasters append to service names ("7two Perth").
+const CITIES: [&str; 8] = [
+    "adelaide",
+    "brisbane",
+    "canberra",
+    "darwin",
+    "hobart",
+    "melbourne",
+    "perth",
+    "sydney",
+];
+
 /// Lower-case, alphanumerics only, and without a trailing city name so
 /// "7two Perth" and "7two" compare equal.
 pub fn normalise(name: &str) -> String {
@@ -73,7 +85,11 @@ pub fn normalise(name: &str) -> String {
         .filter(|c| c.is_alphanumeric())
         .flat_map(char::to_lowercase)
         .collect();
-    s.strip_suffix("perth").map(str::to_string).unwrap_or(s)
+    CITIES
+        .iter()
+        .find_map(|c| s.strip_suffix(c))
+        .map(str::to_string)
+        .unwrap_or(s)
 }
 
 pub fn names_similar(a: &str, b: &str) -> bool {

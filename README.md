@@ -23,10 +23,11 @@ export a `.zip` channel list.
 
    ```sh
    cargo build --release
-   ./target/release/tvmap edit /Volumes/USB/Channel_list_T-KTMDEUC-1410.1.zip --map maps/perth.toml
+   ./target/release/tvmap edit /Volumes/USB/Channel_list_T-KTMDEUC-1410.1.zip --map maps/au/wa/perth.toml
    ```
 
-   This opens the editor with the Perth map applied. Press `w` to
+   This opens the editor with the Perth map applied (see [Maps](#maps) for
+   other cities). Press `w` to
    write. The new list goes to `tvmap-out/` under the **same file name**
    (the TV looks for it), and the map you ended up with goes to
    `tvmap-out/channel-map.toml`.
@@ -43,31 +44,53 @@ tvmap apply Channel_list_….zip
 
 ### Commands
 
-| Command | |
-|---|---|
-| `tvmap list ZIP` | Show every service and what the map would do |
-| `tvmap apply ZIP [-o OUT] [--dry-run] [--save-map FILE]` | Apply without the editor |
-| `tvmap edit ZIP [-o OUT] [--save-map FILE]` | Interactive editor |
+| Command                                                  |                                              |
+|----------------------------------------------------------|----------------------------------------------|
+| `tvmap list ZIP`                                         | Show every service and what the map would do |
+| `tvmap apply ZIP [-o OUT] [--dry-run] [--save-map FILE]` | Apply without the editor                     |
+| `tvmap edit ZIP [-o OUT] [--save-map FILE]`              | Interactive editor                           |
 
 All take `--map FILE` or `--empty` (start from nothing). With neither, the
 map is read from `tvmap-out/channel-map.toml`; if that doesn't exist, tvmap
 stops and asks for one. The map is read at run time, so editing it never
-needs a rebuild. `maps/perth.toml` is the Perth, WA map.
+needs a rebuild.
+
+### Maps
+
+One map per city, under `maps/au/<state>/`:
+
+| Map                  | Status                          |
+|----------------------|---------------------------------|
+| `wa/perth.toml`      | Tested on a real TV (see below) |
+| `nsw/sydney.toml`    | **Untested**, best effort       |
+| `act/canberra.toml`  | **Untested**, best effort       |
+| `vic/melbourne.toml` | **Untested**, best effort       |
+| `sa/adelaide.toml`   | **Untested**, best effort       |
+| `qld/brisbane.toml`  | **Untested**, best effort       |
+| `tas/hobart.toml`    | **Untested**, best effort       |
+| `nt/darwin.toml`     | **Untested**, best effort       |
+
+The untested maps take their service IDs from Free TV Australia's DTTB
+Service Information Register (Issue 16, June 2021), and number channels the
+same way as Perth. Services that started after 2021 (ABC HD and NITV HD among
+them) aren't in it, and IDs may have changed, so expect yellow rows: fix them
+in the editor and press `w`, and the saved map is right for your TV from then
+on. A tested map from another city is very welcome.
 
 ### Editor keys
 
-| Key | |
-|---|---|
-| `1`–`9`, `Enter`, `e` | Type a channel number |
-| `k` | Keep the TV's own number (e.g. leave it in the 800s) |
-| `h` | Toggle hidden (removed from the channel list) |
-| `s` | Toggle skip (typing the number works, CH+/CH− skips it) |
-| `o` | Accept a flagged match as OK |
-| `r` | Revert the row to what the map proposed |
-| `n` | Jump to the next row that needs a look |
-| `a` | Show only rows that need a look |
-| `w` | Write the zip and map |
-| `q` | Quit |
+| Key                   |                                                         |
+|-----------------------|---------------------------------------------------------|
+| `1`–`9`, `Enter`, `e` | Type a channel number                                   |
+| `k`                   | Keep the TV's own number (e.g. leave it in the 800s)    |
+| `h`                   | Toggle hidden (removed from the channel list)           |
+| `s`                   | Toggle skip (typing the number works, CH+/CH− skips it) |
+| `o`                   | Accept a flagged match as OK                            |
+| `r`                   | Revert the row to what the map proposed                 |
+| `n`                   | Jump to the next row that needs a look                  |
+| `a`                   | Show only rows that need a look                         |
+| `w`                   | Write the zip and map                                   |
+| `q`                   | Quit                                                    |
 
 Yellow rows need a look, red rows share a number with another row. tvmap
 won't write while any number is used twice.
@@ -118,4 +141,7 @@ the one meant to change.
 
 The file format notes come from [ChanSort](https://github.com/PredatH0r/ChanSort)'s
 Samsung loader. Perth channel numbers are from Wikipedia's *List of digital
-television channels in Australia* (October 2026).
+television channels in Australia* (October 2026). Service IDs for the other
+cities are from Free TV Australia's
+[DTTB Service Information Register](https://www.freetv.com.au/what-we-do/technology-innovation/)
+(Issue 16, June 2021).

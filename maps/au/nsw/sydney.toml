@@ -1,0 +1,352 @@
+# Sydney, NSW free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# UNTESTED: not checked against a real TV in Sydney. Best effort.
+#
+# Service IDs (onid/tsid/sid) are from Free TV Australia's DTTB Service
+# Information Register, Issue 16 (June 2021). Services that started after
+# that aren't listed, and IDs may have changed since; tvmap flags both
+# ("not in map", "matched by name"), so check the editor before writing.
+# Names are a guess at what the TV shows; a different name only raises a flag.
+#
+# Numbering follows maps/au/wa/perth.toml (tested): where a network has an SD
+# and an HD copy of its main channel, the HD copy gets the main number.
+# ABC HD and NITV HD aren't in the register, so ABC's SD copy is on 20 and
+# NITV's on 36, as in Perth. Give the HD copies 2 and 34 in the editor.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Sydney, NSW"
+
+# --- ABC (onid 4112, tsid 545) -------------------------------------------
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 545
+name = "ABC TV"
+number = 20
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 544
+name = "ABC NEWS"
+number = 24
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 547
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 546
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 548
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 550
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 4112
+tsid = 545
+sid = 551
+name = "ABC Jazz"
+number = 201
+
+
+# --- SBS (onid 12802, tsid 768) ------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 769
+name = "SBS ONE"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 774
+name = "SBS ONE HD"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 771
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 775
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 772
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 773
+name = "NITV"
+number = 36
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 785
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 786
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 787
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 788
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 789
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 790
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 768
+sid = 791
+name = "SBS PopAsia"
+number = 307
+
+
+# --- Seven (onid 4115, tsid 1282) ----------------------------------------
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1312
+name = "7 Sydney"
+number = 7
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1316
+name = "7 Sydney"
+number = 71
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1313
+name = "7 Sydney"
+number = 70
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1314
+name = "7two Sydney"
+number = 72
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1319
+name = "7mate Sydney"
+number = 74
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1318
+name = "7Bravo Sydney"
+number = 75
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1317
+name = "7flix Sydney"
+number = 76
+
+[[channel]]
+onid = 4115
+tsid = 1282
+sid = 1320
+name = "RACING.COM"
+number = 78
+
+
+# --- Nine (onid 4114, tsid 1056) -----------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1057
+name = "Channel 9 Sydney"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1058
+name = "9HD Sydney"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1062
+name = "9HD Sydney"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1063
+name = "9GemHD Sydney"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1059
+name = "9Go!HD Sydney"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1060
+name = "9LifeHD Sydney"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1061
+name = "9GemHD Sydney"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1065
+name = "9Rush Sydney"
+number = 96
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1066
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1056
+sid = 1064
+name = "9Go!HD Sydney"
+number = 99
+
+
+# --- Ten (onid 4116, tsid 1538) ------------------------------------------
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1569
+name = "10 HD"
+number = 10
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1573
+name = "10"
+number = 1
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1572
+name = "10 HD"
+number = 15
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1575
+name = "10 drama"
+number = 12
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1576
+name = "10 comedy"
+number = 11
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1574
+name = "you.tv"
+number = 16
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1577
+name = "gecko"
+number = 17
+
+[[channel]]
+onid = 4116
+tsid = 1538
+sid = 1571
+name = "Nickelodeon"
+number = 13
