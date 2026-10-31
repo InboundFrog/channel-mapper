@@ -13,20 +13,22 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
       - uses: Swatinem/rust-cache@v2
-      - run: cargo fmt --check
-      - run: cargo clippy --all-targets -- -D warnings
-      - run: cargo test
+      - run: ci/run.sh cargo fmt --check
+      - run: ci/run.sh cargo clippy --all-targets -- -D warnings
+      - run: ci/run.sh cargo test
       - name: Smoke test the CLI
+        shell: bash
         run: |
-          cargo run --quiet -- list tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip
-          cargo run --quiet -- apply tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip -o tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --save-map tvmap-out/channel-map.toml
-          cargo run --quiet -- list tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --map tvmap-out/channel-map.toml
-      - run: cargo build --release
+          set -e
+          ci/run.sh cargo run --quiet -- list tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip
+          ci/run.sh cargo run --quiet -- apply tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip -o tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --save-map tvmap-out/channel-map.toml
+          ci/run.sh cargo run --quiet -- list tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --map tvmap-out/channel-map.toml
+      - run: ci/run.sh cargo build --release
       - uses: actions/upload-artifact@v4
         with:
           name: tvmap-${{ matrix.os }}
