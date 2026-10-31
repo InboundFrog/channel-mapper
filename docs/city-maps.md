@@ -94,11 +94,13 @@ none of which change a guide number:
 
 The 9Go! swaps only change which copy of the same programme lands on 93.
 
-`tools/freetv_maps.py` reads Issue 16 only. Issue 18 is laid out
+`tools/freetv_maps.py` reads both issues. Issue 18 is laid out
 differently: it's at half the scale, the ONID/NID/TSID/SID headings are on
 one row, and the NT-WA-Tas sheet has no "Service" heading on the
-"Broadcaster" row. Its fixed pixel tolerances don't cope with that. The
-comparison above was made with a patched copy, not the committed script.
+"Broadcaster" row. The script measures distances in multiples of the
+sheet's text height, so it copes with both. Run on Issue 16 it reproduces
+the committed maps exactly; run on Issue 18 it gives the three differences
+above.
 
 ## How the numbers are chosen
 
