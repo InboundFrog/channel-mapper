@@ -23,18 +23,18 @@ any Rust was written.
 The export is checked in as `tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip`.
 The tests in `tests/roundtrip.rs` cover:
 
-| Test | Checks |
-|---|---|
-| `reads_the_export` | 58 services, all at 800–857, `lcn` 65535, names decode |
-| `perth_map_covers_everything` | Every service matches the Perth map with no flags and no conflicts |
-| `main_numbers_are_hd` | 2, 3, 7, 9 and 10 are HD services |
-| `apply_changes_only_channel_numbers` | Full-database byte diff: only `SRV.major` changes. Integrity check ok, names still TEXT |
-| `other_zip_entries_are_untouched` | Entry order kept; non-database entries byte-identical, compressed |
-| `hide_and_skip_touch_only_their_columns` | Hide changes `hidden` + `hideGuide`; skip changes `numSel`; nothing else |
-| `refuses_duplicate_numbers` | Won't write, and leaves no partial output |
-| `refuses_to_overwrite_the_original` | Original file unchanged |
-| `saved_map_reproduces_the_plan` | Save a map, reload it, get the same result |
-| `flags_renamed_services` / `falls_back_to_name_when_service_id_changes` / `ambiguous_name_fallback_is_left_unmatched` | Matching heuristics |
+| Test                                                                                                                  | Checks                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `reads_the_export`                                                                                                    | 58 services, all at 800–857, `lcn` 65535, names decode                                  |
+| `perth_map_covers_everything`                                                                                         | Every service matches the Perth map with no flags and no conflicts                      |
+| `main_numbers_are_hd`                                                                                                 | 2, 3, 7, 9 and 10 are HD services                                                       |
+| `apply_changes_only_channel_numbers`                                                                                  | Full-database byte diff: only `SRV.major` changes. Integrity check ok, names still TEXT |
+| `other_zip_entries_are_untouched`                                                                                     | Entry order kept; non-database entries byte-identical, compressed                       |
+| `hide_and_skip_touch_only_their_columns`                                                                              | Hide changes `hidden` + `hideGuide`; skip changes `numSel`; nothing else                |
+| `refuses_duplicate_numbers`                                                                                           | Won't write, and leaves no partial output                                               |
+| `refuses_to_overwrite_the_original`                                                                                   | Original file unchanged                                                                 |
+| `saved_map_reproduces_the_plan`                                                                                       | Save a map, reload it, get the same result                                              |
+| `flags_renamed_services` / `falls_back_to_name_when_service_id_changes` / `ambiguous_name_fallback_is_left_unmatched` | Matching heuristics                                                                     |
 
 The editor is tested in `src/tui.rs` with ratatui's `TestBackend`, by
 feeding key presses and checking state and the rendered screen:

@@ -4,66 +4,66 @@ The 58 services in the Perth export (October 2026) and the numbers in
 [`maps/au/wa/perth.toml`](../maps/au/wa/perth.toml). "Was" is the number
 the UK firmware gave the service.
 
-| New | Name (as broadcast) | Type | onid/tsid/sid | Was | MHz |
-|---:|---|---|---|---:|---:|
-| 1 | 10 | SD TV (MPEG-2) | 4116/1543/1669 | 800 | 219.5 |
-| 2 | ABCTV HD | HD TV (H.264) | 12801/609/741 | 833 | 226.5 |
-| 3 | SBS ONE HD | HD TV (H.264) | 12802/800/805 | 846 | 184.5 |
-| 7 | 7 Perth | HD TV (H.264) | 4115/1286/1376 | 806 | 177.5 |
-| 9 | 9HD Perth | HD TV (H.264) | 4114/1120/1122 | 817 | 191.5 |
-| 10 | 10 HD | HD TV (H.264) | 4116/1543/1665 | 803 | 219.5 |
-| 11 | 10 comedy | HD TV (H.264) | 4116/1543/1672 | 801 | 219.5 |
-| 12 | 10 drama | HD TV (H.264) | 4116/1543/1671 | 802 | 219.5 |
-| 13 | Nickelodeon | SD TV (H.264) | 4116/1543/1667 | 838 | 219.5 |
-| 14 | 10 HD +1 | HD TV (H.264) | 4116/1543/1666 | 805 | 219.5 |
-| 15 | 10 HD | HD TV (H.264) | 4116/1543/1668 | 804 | 219.5 |
-| 16 | you.tv | SD TV (H.264) | 4116/1543/1670 | 857 | 219.5 |
-| 17 | gecko | SD TV (H.264) | 4116/1543/1673 | 837 | 219.5 |
-| 20 | ABC TV | SD TV (MPEG-2) | 12801/609/737 | 831 | 226.5 |
-| 21 | ABC TV | SD TV (MPEG-2) | 12801/609/739 | 832 | 226.5 |
-| 22 | ABC Kids/ABC Family | SD TV (MPEG-2) | 12801/609/738 | 826 | 226.5 |
-| 23 | ABC Entertains | HD TV (H.264) | 12801/609/740 | 823 | 226.5 |
-| 24 | ABC NEWS | HD TV (H.264) | 12801/609/736 | 827 | 226.5 |
-| 25 | ABC PERTH | Radio | 12801/609/749 | 829 | 226.5 |
-| 26 | ABC RN | Radio | 12801/609/750 | 830 | 226.5 |
-| 27 | ABC Classic | Radio | 12801/609/747 | 821 | 226.5 |
-| 28 | triple j | Radio | 12801/609/745 | 854 | 226.5 |
-| 29 | triple j Unearthed | Radio | 12801/609/746 | 855 | 226.5 |
-| 30 | SBS ONE | SD TV (MPEG-2) | 12802/800/801 | 845 | 184.5 |
-| 31 | SBS2 | HD TV (H.264) | 12802/800/806 | 853 | 184.5 |
-| 32 | SBS World Movies | HD TV (H.264) | 12802/800/807 | 852 | 184.5 |
-| 33 | SBS Food | SD TV (MPEG-2) | 12802/800/803 | 844 | 184.5 |
-| 34 | NITV HD | HD TV (H.264) | 12802/800/809 | 840 | 184.5 |
-| 36 | NITV | SD TV (MPEG-2) | 12802/800/804 | 839 | 184.5 |
-| 70 | 7 Perth | HD TV (H.264) | 4115/1286/1377 | 807 | 177.5 |
-| 71 | 7 Perth | HD TV (H.264) | 4115/1286/1380 | 808 | 177.5 |
-| 72 | 7two Perth | HD TV (H.264) | 4115/1286/1378 | 812 | 177.5 |
-| 74 | 7mate Perth | HD TV (H.264) | 4115/1286/1383 | 811 | 177.5 |
-| 75 | 7Bravo Perth | HD TV (H.264) | 4115/1286/1382 | 809 | 177.5 |
-| 76 | 7flix Perth | SD TV (H.264) | 4115/1286/1381 | 810 | 177.5 |
-| 77 | TVSN | SD TV (H.264) | 4115/1286/1385 | 856 | 177.5 |
-| 78 | RACING.COM | SD TV (H.264) | 4115/1286/1384 | 841 | 177.5 |
-| 90 | 9HD Perth | HD TV (H.264) | 4114/1120/1126 | 818 | 191.5 |
-| 91 | Channel 9 Perth | SD TV (MPEG-2) | 4114/1120/1121 | 834 | 191.5 |
-| 92 | 9GemHD Perth | HD TV (H.264) | 4114/1120/1125 | 813 | 191.5 |
-| 93 | 9Go!HD Perth | HD TV (H.264) | 4114/1120/1123 | 815 | 191.5 |
-| 94 | 9LifeHD Perth | HD TV (H.264) | 4114/1120/1124 | 819 | 191.5 |
-| 95 | 9GemHD Perth | HD TV (H.264) | 4114/1120/1127 | 814 | 191.5 |
-| 96 | 9Rush Perth | SD TV (H.264) | 4114/1120/1129 | 820 | 191.5 |
-| 97 | Extra | SD TV (H.264) | 4114/1120/1130 | 836 | 191.5 |
-| 99 | 9Go!HD Perth | HD TV (H.264) | 4114/1120/1128 | 816 | 191.5 |
-| 200 | Double J | Radio | 12801/609/742 | 835 | 226.5 |
-| 201 | ABC Jazz | Radio | 12801/609/743 | 824 | 226.5 |
-| 202 | ABC KIDS Listen | Radio | 12801/609/744 | 825 | 226.5 |
-| 203 | ABC Country | Radio | 12801/609/748 | 822 | 226.5 |
-| 204 | ABC NewsRadio | Radio (AAC) | 12801/609/751 | 828 | 226.5 |
-| 301 | SBS Radio 1 | Radio | 12802/800/817 | 848 | 184.5 |
-| 302 | SBS Radio 2 | Radio | 12802/800/818 | 849 | 184.5 |
-| 303 | SBS Radio 3 | Radio | 12802/800/819 | 850 | 184.5 |
-| 304 | SBS Arabic | Radio | 12802/800/820 | 842 | 184.5 |
-| 305 | SBS South Asian | Radio | 12802/800/821 | 851 | 184.5 |
-| 306 | SBS Chill | Radio | 12802/800/822 | 843 | 184.5 |
-| 307 | SBS PopAsia | Radio | 12802/800/823 | 847 | 184.5 |
+| New | Name (as broadcast) | Type           | onid/tsid/sid  | Was |   MHz |
+| --: | ------------------- | -------------- | -------------- | --: | ----: |
+|   1 | 10                  | SD TV (MPEG-2) | 4116/1543/1669 | 800 | 219.5 |
+|   2 | ABCTV HD            | HD TV (H.264)  | 12801/609/741  | 833 | 226.5 |
+|   3 | SBS ONE HD          | HD TV (H.264)  | 12802/800/805  | 846 | 184.5 |
+|   7 | 7 Perth             | HD TV (H.264)  | 4115/1286/1376 | 806 | 177.5 |
+|   9 | 9HD Perth           | HD TV (H.264)  | 4114/1120/1122 | 817 | 191.5 |
+|  10 | 10 HD               | HD TV (H.264)  | 4116/1543/1665 | 803 | 219.5 |
+|  11 | 10 comedy           | HD TV (H.264)  | 4116/1543/1672 | 801 | 219.5 |
+|  12 | 10 drama            | HD TV (H.264)  | 4116/1543/1671 | 802 | 219.5 |
+|  13 | Nickelodeon         | SD TV (H.264)  | 4116/1543/1667 | 838 | 219.5 |
+|  14 | 10 HD +1            | HD TV (H.264)  | 4116/1543/1666 | 805 | 219.5 |
+|  15 | 10 HD               | HD TV (H.264)  | 4116/1543/1668 | 804 | 219.5 |
+|  16 | you.tv              | SD TV (H.264)  | 4116/1543/1670 | 857 | 219.5 |
+|  17 | gecko               | SD TV (H.264)  | 4116/1543/1673 | 837 | 219.5 |
+|  20 | ABC TV              | SD TV (MPEG-2) | 12801/609/737  | 831 | 226.5 |
+|  21 | ABC TV              | SD TV (MPEG-2) | 12801/609/739  | 832 | 226.5 |
+|  22 | ABC Kids/ABC Family | SD TV (MPEG-2) | 12801/609/738  | 826 | 226.5 |
+|  23 | ABC Entertains      | HD TV (H.264)  | 12801/609/740  | 823 | 226.5 |
+|  24 | ABC NEWS            | HD TV (H.264)  | 12801/609/736  | 827 | 226.5 |
+|  25 | ABC PERTH           | Radio          | 12801/609/749  | 829 | 226.5 |
+|  26 | ABC RN              | Radio          | 12801/609/750  | 830 | 226.5 |
+|  27 | ABC Classic         | Radio          | 12801/609/747  | 821 | 226.5 |
+|  28 | triple j            | Radio          | 12801/609/745  | 854 | 226.5 |
+|  29 | triple j Unearthed  | Radio          | 12801/609/746  | 855 | 226.5 |
+|  30 | SBS ONE             | SD TV (MPEG-2) | 12802/800/801  | 845 | 184.5 |
+|  31 | SBS2                | HD TV (H.264)  | 12802/800/806  | 853 | 184.5 |
+|  32 | SBS World Movies    | HD TV (H.264)  | 12802/800/807  | 852 | 184.5 |
+|  33 | SBS Food            | SD TV (MPEG-2) | 12802/800/803  | 844 | 184.5 |
+|  34 | NITV HD             | HD TV (H.264)  | 12802/800/809  | 840 | 184.5 |
+|  36 | NITV                | SD TV (MPEG-2) | 12802/800/804  | 839 | 184.5 |
+|  70 | 7 Perth             | HD TV (H.264)  | 4115/1286/1377 | 807 | 177.5 |
+|  71 | 7 Perth             | HD TV (H.264)  | 4115/1286/1380 | 808 | 177.5 |
+|  72 | 7two Perth          | HD TV (H.264)  | 4115/1286/1378 | 812 | 177.5 |
+|  74 | 7mate Perth         | HD TV (H.264)  | 4115/1286/1383 | 811 | 177.5 |
+|  75 | 7Bravo Perth        | HD TV (H.264)  | 4115/1286/1382 | 809 | 177.5 |
+|  76 | 7flix Perth         | SD TV (H.264)  | 4115/1286/1381 | 810 | 177.5 |
+|  77 | TVSN                | SD TV (H.264)  | 4115/1286/1385 | 856 | 177.5 |
+|  78 | RACING.COM          | SD TV (H.264)  | 4115/1286/1384 | 841 | 177.5 |
+|  90 | 9HD Perth           | HD TV (H.264)  | 4114/1120/1126 | 818 | 191.5 |
+|  91 | Channel 9 Perth     | SD TV (MPEG-2) | 4114/1120/1121 | 834 | 191.5 |
+|  92 | 9GemHD Perth        | HD TV (H.264)  | 4114/1120/1125 | 813 | 191.5 |
+|  93 | 9Go!HD Perth        | HD TV (H.264)  | 4114/1120/1123 | 815 | 191.5 |
+|  94 | 9LifeHD Perth       | HD TV (H.264)  | 4114/1120/1124 | 819 | 191.5 |
+|  95 | 9GemHD Perth        | HD TV (H.264)  | 4114/1120/1127 | 814 | 191.5 |
+|  96 | 9Rush Perth         | SD TV (H.264)  | 4114/1120/1129 | 820 | 191.5 |
+|  97 | Extra               | SD TV (H.264)  | 4114/1120/1130 | 836 | 191.5 |
+|  99 | 9Go!HD Perth        | HD TV (H.264)  | 4114/1120/1128 | 816 | 191.5 |
+| 200 | Double J            | Radio          | 12801/609/742  | 835 | 226.5 |
+| 201 | ABC Jazz            | Radio          | 12801/609/743  | 824 | 226.5 |
+| 202 | ABC KIDS Listen     | Radio          | 12801/609/744  | 825 | 226.5 |
+| 203 | ABC Country         | Radio          | 12801/609/748  | 822 | 226.5 |
+| 204 | ABC NewsRadio       | Radio (AAC)    | 12801/609/751  | 828 | 226.5 |
+| 301 | SBS Radio 1         | Radio          | 12802/800/817  | 848 | 184.5 |
+| 302 | SBS Radio 2         | Radio          | 12802/800/818  | 849 | 184.5 |
+| 303 | SBS Radio 3         | Radio          | 12802/800/819  | 850 | 184.5 |
+| 304 | SBS Arabic          | Radio          | 12802/800/820  | 842 | 184.5 |
+| 305 | SBS South Asian     | Radio          | 12802/800/821  | 851 | 184.5 |
+| 306 | SBS Chill           | Radio          | 12802/800/822  | 843 | 184.5 |
+| 307 | SBS PopAsia         | Radio          | 12802/800/823  | 847 | 184.5 |
 
 ## Where the numbers come from
 
@@ -86,14 +86,14 @@ to services by name. The IDs are from the export. Two adjustments:
 
 Several numbers carry the same programme:
 
-| Numbers | Services |
-|---|---|
+| Numbers   | Services                                                |
+| --------- | ------------------------------------------------------- |
 | 7, 70, 71 | Three `7 Perth` services (sid 1376, 1377, 1380), all HD |
-| 9, 90 | Two `9HD Perth` (1122, 1126) |
-| 92, 95 | Two `9GemHD Perth` (1125, 1127) |
-| 93, 99 | Two `9Go!HD Perth` (1123, 1128) |
-| 10, 15 | Two `10 HD` (1665, 1668) |
-| 20, 21 | Two `ABC TV` SD (737, 739) |
+| 9, 90     | Two `9HD Perth` (1122, 1126)                            |
+| 92, 95    | Two `9GemHD Perth` (1125, 1127)                         |
+| 93, 99    | Two `9Go!HD Perth` (1123, 1128)                         |
+| 10, 15    | Two `10 HD` (1665, 1668)                                |
+| 20, 21    | Two `ABC TV` SD (737, 739)                              |
 
 The names and service types don't say which copy is which, so the lowest
 service ID gets the lower number. Because they're simulcasts, getting this

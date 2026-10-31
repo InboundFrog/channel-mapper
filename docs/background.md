@@ -37,12 +37,12 @@ TVs were said to be. It isn't. The `CHNL` table records the frequency each
 multiplex was found on, and all five Perth multiplexes are on VHF Band III:
 
 | Multiplex | Frequency | Channel |
-|---|---|---|
-| Seven | 177.5 MHz | VHF 6 |
-| SBS | 184.5 MHz | VHF 7 |
-| Nine | 191.5 MHz | VHF 8 |
-| Ten | 219.5 MHz | VHF 11 |
-| ABC | 226.5 MHz | VHF 12 |
+| --------- | --------- | ------- |
+| Seven     | 177.5 MHz | VHF 6   |
+| SBS       | 184.5 MHz | VHF 7   |
+| Nine      | 191.5 MHz | VHF 8   |
+| Ten       | 219.5 MHz | VHF 11  |
+| ABC       | 226.5 MHz | VHF 12  |
 
 The TV can only have read the service names by tuning those frequencies.
 
@@ -55,15 +55,15 @@ Australia does, so pan-European Samsung firmware includes it.
 
 ## Fixes considered
 
-| Option | Outcome |
-|---|---|
-| Change the TV's country to Australia, then rescan | The proper fix, but this model's Broadcasting menu has no Country (Area) option |
-| Change the region in the hidden service menu | Possible on some Samsungs, but that menu has settings that can break the TV. Kept as a last resort, not tried |
-| **Edit Channels → Change Number** on the TV | Commonly greyed out for digital channels. Samsung forum advice is to export the list and use ChanSort |
-| **ChanSort** (Windows app that edits exported lists) | Supports this file format (Samsung J/K/M/MU/Q `.zip`). Windows only, and a one-off edit: every rescan means redoing it by hand |
-| Favourites list | Lets you reorder, but not renumber. Doesn't help someone typing numbers from a guide |
-| Australian set-top box (around A$40–60) | Correct numbers without any editing, and survives rescans. Worth considering, but it adds a second remote |
-| **tvmap** | Edits the exported list directly. The number for each channel lives in a map keyed on broadcast IDs, so after a rescan you re-apply the map instead of starting again |
+| Option                                               | Outcome                                                                                                                                                               |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change the TV's country to Australia, then rescan    | The proper fix, but this model's Broadcasting menu has no Country (Area) option                                                                                       |
+| Change the region in the hidden service menu         | Possible on some Samsungs, but that menu has settings that can break the TV. Kept as a last resort, not tried                                                         |
+| **Edit Channels → Change Number** on the TV          | Commonly greyed out for digital channels. Samsung forum advice is to export the list and use ChanSort                                                                 |
+| **ChanSort** (Windows app that edits exported lists) | Supports this file format (Samsung J/K/M/MU/Q `.zip`). Windows only, and a one-off edit: every rescan means redoing it by hand                                        |
+| Favourites list                                      | Lets you reorder, but not renumber. Doesn't help someone typing numbers from a guide                                                                                  |
+| Australian set-top box (around A$40–60)              | Correct numbers without any editing, and survives rescans. Worth considering, but it adds a second remote                                                             |
+| **tvmap**                                            | Edits the exported list directly. The number for each channel lives in a map keyed on broadcast IDs, so after a rescan you re-apply the map instead of starting again |
 
 ## Sources
 

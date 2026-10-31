@@ -6,12 +6,12 @@ expects. Other firmware versions may differ; see [Caveats](#caveats).
 
 ## The zip
 
-| Entry (in order) | Size | What it is |
-|---|---:|---|
-| `dvbt` | 27 KB | SQLite: antenna (DVB-T) channels. The only file tvmap changes |
-| `sat` | 68 KB | SQLite: satellite and transponder tables (`SAT`, `SAT_TP`, `SAT_HT`, `SAT_HS`). Present although satellite isn't used |
-| `ipsrv` | 1.9 MB | SQLite: internet channels (`CHNL`, `SRV`, `SRV_IP`, `SRV_FAV`), probably Samsung TV Plus. Not looked at further |
-| `metadata.xml` | 187 B | `ANALOG_COUNTRY` 7, `DIGITAL_COUNTRY` 4670034 (`0x474252` = `GBR`), `SEI_VERSION` 64 |
+| Entry (in order) |   Size | What it is                                                                                                            |
+| ---------------- | -----: | --------------------------------------------------------------------------------------------------------------------- |
+| `dvbt`           |  27 KB | SQLite: antenna (DVB-T) channels. The only file tvmap changes                                                         |
+| `sat`            |  68 KB | SQLite: satellite and transponder tables (`SAT`, `SAT_TP`, `SAT_HT`, `SAT_HS`). Present although satellite isn't used |
+| `ipsrv`          | 1.9 MB | SQLite: internet channels (`CHNL`, `SRV`, `SRV_IP`, `SRV_FAV`), probably Samsung TV Plus. Not looked at further       |
+| `metadata.xml`   |  187 B | `ANALOG_COUNTRY` 7, `DIGITAL_COUNTRY` 4670034 (`0x474252` = `GBR`), `SEI_VERSION` 64                                  |
 
 - Every entry is deflated, with a zero DOS timestamp (shows as
   `1980-00-00`) and "made by" version 0.0.
@@ -37,39 +37,39 @@ expects. Other firmware versions may differ; see [Caveats](#caveats).
 
 **`CHNL`**: one row per multiplex (5 in Perth).
 
-| Column | Meaning | Perth values |
-|---|---|---|
-| `chId` | Key, referenced by `SRV.chId` | 4357506 … 4420226 |
-| `freq` | Centre frequency in kHz | 177500 … 226500 |
-| `chType` | Signal type | 2 |
-| `band`, `mod`, `dig` | Band, modulation, digital flag | 2, 10, 1 |
-| `chNum` | Unknown; differs per multiplex | 2550, 2690, 2830, 3390, 3530 |
+| Column               | Meaning                        | Perth values                 |
+| -------------------- | ------------------------------ | ---------------------------- |
+| `chId`               | Key, referenced by `SRV.chId`  | 4357506 … 4420226            |
+| `freq`               | Centre frequency in kHz        | 177500 … 226500              |
+| `chType`             | Signal type                    | 2                            |
+| `band`, `mod`, `dig` | Band, modulation, digital flag | 2, 10, 1                     |
+| `chNum`              | Unknown; differs per multiplex | 2550, 2690, 2830, 3390, 3530 |
 
 **`SRV`**: one row per service (58 in Perth).
 
-| Column | Meaning |
-|---|---|
-| `srvId` | Key. Large 64-bit values (around 2.4 × 10¹⁸); store as `i64` |
-| `chId` | The multiplex it's on (`CHNL.chId`) |
-| `major` | **The channel number the TV shows.** This is what tvmap changes |
-| `minor` | 65534 everywhere |
-| `progNum` | DVB service ID |
-| `tsid` | Transport stream ID. In this schema it's in `SRV`, not `SRV_DVB` |
-| `srvName` | Name, in a byte-swapped encoding: see below |
-| `srvType` | DVB service type (see below) |
-| `hidden`, `hideGuide` | Hidden from the channel list / guide. ChanSort always sets both together |
-| `numSel` | Selectable with CH+/CH−. 0 means "skip" |
-| `elim` | Deleted. ChanSort ignores rows where it's set; so does tvmap |
-| `lockMode`, `modifiedByUser`, … | Not used by tvmap |
+| Column                          | Meaning                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| `srvId`                         | Key. Large 64-bit values (around 2.4 × 10¹⁸); store as `i64`             |
+| `chId`                          | The multiplex it's on (`CHNL.chId`)                                      |
+| `major`                         | **The channel number the TV shows.** This is what tvmap changes          |
+| `minor`                         | 65534 everywhere                                                         |
+| `progNum`                       | DVB service ID                                                           |
+| `tsid`                          | Transport stream ID. In this schema it's in `SRV`, not `SRV_DVB`         |
+| `srvName`                       | Name, in a byte-swapped encoding: see below                              |
+| `srvType`                       | DVB service type (see below)                                             |
+| `hidden`, `hideGuide`           | Hidden from the channel list / guide. ChanSort always sets both together |
+| `numSel`                        | Selectable with CH+/CH−. 0 means "skip"                                  |
+| `elim`                          | Deleted. ChanSort ignores rows where it's set; so does tvmap             |
+| `lockMode`, `modifiedByUser`, … | Not used by tvmap                                                        |
 
 **`SRV_DVB`**: one row per service, joined on `srvId`.
 
-| Column | Meaning | Perth values |
-|---|---|---|
-| `onid` | Original network ID | 4114 (Nine), 4115 (Seven), 4116 (Ten), 12801 (ABC), 12802 (SBS) |
-| `nid` | Network ID | 12859, 12860, 12861, 12857, 12802 |
-| `lcn`, `hdLcn` | Broadcaster's channel number | **65535 for every service**: the UK firmware didn't keep them |
-| `shrtSrvName` | Short name | NULL |
+| Column         | Meaning                      | Perth values                                                    |
+| -------------- | ---------------------------- | --------------------------------------------------------------- |
+| `onid`         | Original network ID          | 4114 (Nine), 4115 (Seven), 4116 (Ten), 12801 (ABC), 12802 (SBS) |
+| `nid`          | Network ID                   | 12859, 12860, 12861, 12857, 12802                               |
+| `lcn`, `hdLcn` | Broadcaster's channel number | **65535 for every service**: the UK firmware didn't keep them   |
+| `shrtSrvName`  | Short name                   | NULL                                                            |
 
 **`SRV_FAV`**: favourites lists, as `(srvId, fav, pos)`. This TV has one
 list (`fav` = 1) with five entries: ABC HD, 7, 9, 10 and SBS HD. tvmap
@@ -91,13 +91,13 @@ two each of `9HD Perth`, `9GemHD Perth`, `9Go!HD Perth`, `10 HD` and
 
 ### Service types seen
 
-| `srvType` | DVB meaning | Count |
-|---:|---|---:|
-| 1 | Digital TV, MPEG-2 SD | 8 |
-| 22 (0x16) | H.264 SD TV | 8 |
-| 25 (0x19) | H.264 HD TV | 25 |
-| 2 | Digital radio (MPEG-1 Layer II) | 16 |
-| 10 (0x0A) | Advanced codec radio | 1 |
+| `srvType` | DVB meaning                     | Count |
+| --------: | ------------------------------- | ----: |
+|         1 | Digital TV, MPEG-2 SD           |     8 |
+| 22 (0x16) | H.264 SD TV                     |     8 |
+| 25 (0x19) | H.264 HD TV                     |    25 |
+|         2 | Digital radio (MPEG-1 Layer II) |    16 |
+| 10 (0x0A) | Advanced codec radio            |     1 |
 
 ## Names: read them, never write them
 
@@ -122,11 +122,11 @@ names or IDs.
 
 Inside one transaction, and only for services where something changed:
 
-| Setting | SQL |
-|---|---|
-| Number | `update SRV set major = ? where srvId = ?` |
-| Hidden | `update SRV set hidden = ?, hideGuide = ? where srvId = ?` |
-| Skip | `update SRV set numSel = ? where srvId = ?` |
+| Setting | SQL                                                        |
+| ------- | ---------------------------------------------------------- |
+| Number  | `update SRV set major = ? where srvId = ?`                 |
+| Hidden  | `update SRV set hidden = ?, hideGuide = ? where srvId = ?` |
+| Skip    | `update SRV set numSel = ? where srvId = ?`                |
 
 followed by `REINDEX`. ChanSort does this too, because some Samsung files
 ship with stale indexes.
