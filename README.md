@@ -9,6 +9,12 @@ puts them back on the numbers in the TV guide (7, 72, 9, 90, 2, 20, …).
 It should work on other Samsung Tizen sets (2015+, J/K/M/N/Q series) that
 export a `.zip` channel list.
 
+**NOTE:** The purpose was for a family member with Alzheimers, using a UK
+          TV. The UK firmware stripped Australian channel numbers. Getting
+          someone with Alzheimers to remember new channels that don't match
+          the TV guide is not an option.
+          May work for other TVs, but it's not a priority for me.
+
 ## Use
 
 1. On the TV: **Settings → Broadcasting → Expert Settings → Transfer Channel
