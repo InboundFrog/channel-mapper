@@ -6,10 +6,12 @@
 # current name differs a lot from it.
 #
 # Numbers taken from Wikipedia's "List of digital television channels in
-# Australia" (metropolitan tables), October 2026. Where a network sends the
-# same programme as several services (e.g. "7 Perth" x3), the lowest service
-# ID gets the main number. They're simulcasts, so a swap only changes which
-# copy you land on.
+# Australia" (metropolitan tables), October 2026, with one change: where a
+# network has an SD and an HD copy of its main channel, the HD copy gets the
+# main number (ABC HD on 2, SBS HD on 3; the SD copies move to 20 and 30).
+# Where several services carry the same programme (e.g. "7 Perth" x3), the
+# lowest service ID gets the main number. They're simulcasts, so a swap only
+# changes which copy you land on.
 #
 # Per channel:
 #   number = N      set the channel number (omit to keep whatever the TV has)
@@ -22,15 +24,15 @@ region = "Perth, WA"
 [[channel]]
 onid = 12801
 tsid = 609
-sid = 737
-name = "ABC TV"
+sid = 741
+name = "ABCTV HD"
 number = 2
 
 [[channel]]
 onid = 12801
 tsid = 609
-sid = 741
-name = "ABCTV HD"
+sid = 737
+name = "ABC TV"
 number = 20
 
 [[channel]]
@@ -136,15 +138,15 @@ number = 204
 [[channel]]
 onid = 12802
 tsid = 800
-sid = 801
-name = "SBS ONE"
+sid = 805
+name = "SBS ONE HD"
 number = 3
 
 [[channel]]
 onid = 12802
 tsid = 800
-sid = 805
-name = "SBS ONE HD"
+sid = 801
+name = "SBS ONE"
 number = 30
 
 [[channel]]

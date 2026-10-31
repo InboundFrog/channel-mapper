@@ -123,8 +123,10 @@ fn perth_map_covers_everything() {
     assert_eq!(row(&plan, 1376).target().number, 7);
     assert_eq!(row(&plan, 1378).target().number, 72);
     assert_eq!(row(&plan, 1122).target().number, 9);
-    assert_eq!(row(&plan, 741).target().number, 20);
-    assert_eq!(row(&plan, 805).target().number, 30);
+    assert_eq!(row(&plan, 741).target().number, 2); // ABCTV HD
+    assert_eq!(row(&plan, 737).target().number, 20); // ABC TV (SD)
+    assert_eq!(row(&plan, 805).target().number, 3); // SBS ONE HD
+    assert_eq!(row(&plan, 801).target().number, 30); // SBS ONE (SD)
     assert_eq!(row(&plan, 1665).target().number, 10);
 }
 
@@ -341,4 +343,20 @@ fn empty_map_changes_nothing() {
         .rows
         .iter()
         .all(|r| r.status == Status::Unmatched && !r.is_changed()));
+}
+
+#[test]
+fn main_numbers_are_hd() {
+    // The numbers people actually type should land on the HD copy.
+    let plan = perth_plan();
+    for n in [2, 3, 7, 9, 10] {
+        let r = plan.rows.iter().find(|r| r.target().number == n).unwrap();
+        assert_eq!(
+            r.svc.kind,
+            tvmap::db::Kind::TvHd,
+            "{n} is {} ({:?})",
+            r.svc.name,
+            r.svc.kind
+        );
+    }
 }
