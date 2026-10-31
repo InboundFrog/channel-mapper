@@ -280,13 +280,15 @@ impl App {
             .iter()
             .filter(|r| r.status.needs_attention())
             .count();
-        let title = format!(
-            " tvmap  {}  |  {} services, {changed} changed, {attention} to check, {} conflicting{}{}",
-            self.s.zip.file_name().unwrap_or_default().to_string_lossy(),
+        // Mode flags first, file name last: a narrow terminal cuts off the end.
+        let title =
+            format!(
+            " tvmap{}{}  {} services, {changed} changed, {attention} to check, {} conflicting  {}",
+            if self.dirty { "  *unsaved*" } else { "" },
+            if self.only_attention { "  [problems only]" } else { "" },
             plan.rows.len(),
             conflicts.len(),
-            if self.only_attention { "  [problems only]" } else { "" },
-            if self.dirty { "  *unsaved*" } else { "" },
+            self.s.zip.file_name().unwrap_or_default().to_string_lossy(),
         );
         f.render_widget(Paragraph::new(title).reversed(), head);
 
@@ -399,4 +401,131 @@ pub fn run(session: Session) -> Result<()> {
     let res = event_loop(&mut term, &mut app);
     ratatui::restore();
     res
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use ratatui::backend::TestBackend;
+    use ratatui::Terminal;
+    use tvmap::mapfile::MapFile;
+
+    const FIXTURE: &str = concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip"
+    );
+
+    fn app(dir: &std::path::Path) -> App {
+        let zip = PathBuf::from(FIXTURE);
+        let (_, services) = tvmap::load(&zip).unwrap();
+        App::new(Session {
+            zip,
+            out: dir.join("out.zip"),
+            map_out: dir.join("map.toml"),
+            region: None,
+            plan: Plan::build(services, &MapFile::perth()),
+        })
+    }
+
+    fn press(app: &mut App, keys: &str) {
+        for c in keys.chars() {
+            let code = match c {
+                '\n' => KeyCode::Enter,
+                'v' => KeyCode::Down,
+                '^' => KeyCode::Up,
+                c => KeyCode::Char(c),
+            };
+            assert!(app.key(KeyEvent::from(code)), "quit unexpectedly on {c:?}");
+        }
+    }
+
+    fn screen(app: &mut App) -> String {
+        let mut term = Terminal::new(TestBackend::new(110, 30)).unwrap();
+        term.draw(|f| app.draw(f)).unwrap();
+        let buf = term.backend().buffer().clone();
+        (0..buf.area.height)
+            .map(|y| {
+                (0..buf.area.width)
+                    .map(|x| buf[(x, y)].symbol())
+                    .collect::<String>()
+                    .trim_end()
+                    .to_string()
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    fn selected(app: &App) -> &Row {
+        &app.s.plan.rows[app.selected_row().unwrap()]
+    }
+
+    #[test]
+    fn edit_number_resorts_and_keeps_selection() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut a = app(dir.path());
+        press(&mut a, "vvv"); // 1, 2, 3, -> 7 Perth
+        assert_eq!(selected(&a).svc.name, "7 Perth");
+        press(&mut a, "42\n");
+        let r = selected(&a);
+        assert_eq!((r.svc.name.as_str(), r.target().number), ("7 Perth", 42));
+        assert_eq!(r.status, Status::Manual);
+        assert!(screen(&mut a).contains("7 Perth"));
+    }
+
+    #[test]
+    fn conflicts_block_writing_until_fixed() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut a = app(dir.path());
+        press(&mut a, "72\n"); // "10" -> 72, clashes with 7two
+        assert_eq!(a.conflict_set().len(), 2);
+        press(&mut a, "w");
+        assert!(a.message.starts_with("Not saved"), "{}", a.message);
+        assert!(!dir.path().join("out.zip").exists());
+        assert!(screen(&mut a).contains("2 conflicting"));
+
+        press(&mut a, "r"); // back to the map's 1
+        assert!(a.conflict_set().is_empty());
+        press(&mut a, "hw");
+        assert!(a.message.starts_with("Wrote"), "{}", a.message);
+        assert!(!a.dirty);
+
+        let (_, services) = tvmap::load(&dir.path().join("out.zip")).unwrap();
+        let ten = services.iter().find(|s| s.key.sid == 1669).unwrap();
+        assert_eq!((ten.major, ten.hidden), (1, true));
+        // The saved map reproduces it.
+        let map = MapFile::load(&dir.path().join("map.toml")).unwrap();
+        let e = map.channels.iter().find(|e| e.sid == 1669).unwrap();
+        assert_eq!((e.number, e.hidden), (Some(1), true));
+    }
+
+    #[test]
+    fn keep_and_skip() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut a = app(dir.path());
+        press(&mut a, "k"); // "10" keeps the TV's 800
+        let r = selected(&a);
+        assert_eq!((r.svc.name.as_str(), r.target().number), ("10", 800));
+        press(&mut a, "s");
+        assert!(selected(&a).skip);
+    }
+
+    #[test]
+    fn quitting_with_unsaved_changes_asks_first() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut a = app(dir.path());
+        assert!(a.key(KeyEvent::from(KeyCode::Char('q'))));
+        assert!(matches!(a.mode, Mode::ConfirmQuit));
+        assert!(!a.key(KeyEvent::from(KeyCode::Char('y'))));
+    }
+
+    #[test]
+    fn problems_filter_and_jump() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut a = app(dir.path());
+        press(&mut a, "n");
+        assert!(a.message.contains("Nothing left"));
+        press(&mut a, "a");
+        assert!(a.visible().is_empty());
+        assert!(screen(&mut a).contains("[problems only]"));
+    }
 }

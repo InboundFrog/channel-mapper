@@ -118,8 +118,8 @@ fn print_row(r: &Row) {
 
 fn print_plan(plan: &Plan) {
     println!(
-        "{:>5}    {:<5} {:<5} {:<24} {:<16} {:<11} {}",
-        "now", "new", "type", "name", "onid/tsid/sid", "flags", "status"
+        "{:>5}    {:<5} {:<5} {:<24} {:<16} {:<11} status",
+        "now", "new", "type", "name", "onid/tsid/sid", "flags"
     );
     for r in &plan.rows {
         print_row(r);
@@ -143,8 +143,18 @@ fn print_plan(plan: &Plan) {
     }
 }
 
-fn main() -> Result<()> {
-    match Cli::parse().cmd {
+fn main() -> std::process::ExitCode {
+    match run(Cli::parse()) {
+        Ok(()) => std::process::ExitCode::SUCCESS,
+        Err(e) => {
+            eprintln!("error: {e:#}");
+            std::process::ExitCode::FAILURE
+        }
+    }
+}
+
+fn run(cli: Cli) -> Result<()> {
+    match cli.cmd {
         Cmd::List(c) => print_plan(&c.plan()?.0),
         Cmd::Apply {
             common,
