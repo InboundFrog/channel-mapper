@@ -23,20 +23,22 @@ export a `.zip` channel list.
 
    ```sh
    cargo build --release
-   ./target/release/tvmap edit /Volumes/USB/Channel_list_T-KTMDEUC-1410.1.zip
+   ./target/release/tvmap edit /Volumes/USB/Channel_list_T-KTMDEUC-1410.1.zip --map maps/perth.toml
    ```
 
-   This opens the editor with the built-in Perth map applied. Press `w` to
+   This opens the editor with the Perth map applied. Press `w` to
    write. The new list goes to `tvmap-out/` under the **same file name**
    (the TV looks for it), and the map you ended up with goes to
    `tvmap-out/channel-map.toml`.
 3. Copy `tvmap-out/Channel_list_….zip` onto the stick, replacing the export
    (keep a copy of the original), then **Import from USB** on the TV.
 
-After a rescan, export again and re-apply your saved map:
+After a rescan, export again and re-apply your saved map. Without `--map`,
+tvmap reads `tvmap-out/channel-map.toml`, so from the same folder this is
+enough:
 
 ```sh
-tvmap apply Channel_list_….zip --map tvmap-out/channel-map.toml
+tvmap apply Channel_list_….zip
 ```
 
 ### Commands
@@ -47,8 +49,10 @@ tvmap apply Channel_list_….zip --map tvmap-out/channel-map.toml
 | `tvmap apply ZIP [-o OUT] [--dry-run] [--save-map FILE]` | Apply without the editor |
 | `tvmap edit ZIP [-o OUT] [--save-map FILE]` | Interactive editor |
 
-All take `--map FILE` (your own map) or `--empty` (start from nothing)
-instead of the built-in Perth map.
+All take `--map FILE` or `--empty` (start from nothing). With neither, the
+map is read from `tvmap-out/channel-map.toml`; if that doesn't exist, tvmap
+stops and asks for one. The map is read at run time, so editing it never
+needs a rebuild. `maps/perth.toml` is the Perth, WA map.
 
 ### Editor keys
 

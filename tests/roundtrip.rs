@@ -13,9 +13,17 @@ fn fixture() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(FIXTURE)
 }
 
+fn perth_map() -> MapFile {
+    MapFile::load(Path::new(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/maps/perth.toml"
+    )))
+    .unwrap()
+}
+
 fn perth_plan() -> Plan {
     let (_, services) = tvmap::load(&fixture()).unwrap();
-    Plan::build(services, &MapFile::perth())
+    Plan::build(services, &perth_map())
 }
 
 fn row(plan: &Plan, sid: i64) -> &tvmap::plan::Row {
@@ -289,7 +297,7 @@ fn saved_map_reproduces_the_plan() {
 
 #[test]
 fn flags_renamed_services() {
-    let mut map = MapFile::perth();
+    let mut map = perth_map();
     map.channels
         .iter_mut()
         .find(|e| e.sid == 1385)
@@ -309,7 +317,7 @@ fn flags_renamed_services() {
 
 #[test]
 fn falls_back_to_name_when_service_id_changes() {
-    let mut map = MapFile::perth();
+    let mut map = perth_map();
     map.channels.iter_mut().find(|e| e.sid == 1378).unwrap().sid = 9999; // 7two
     let plan = Plan::build(tvmap::load(&fixture()).unwrap().1, &map);
     let r = row(&plan, 1378);
@@ -324,7 +332,7 @@ fn falls_back_to_name_when_service_id_changes() {
 #[test]
 fn ambiguous_name_fallback_is_left_unmatched() {
     // Three "7 Perth" services; if all their IDs changed we can't tell them apart.
-    let mut map = MapFile::perth();
+    let mut map = perth_map();
     for e in map.channels.iter_mut().filter(|e| e.name == "7 Perth") {
         e.sid += 10_000;
     }

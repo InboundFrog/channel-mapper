@@ -53,21 +53,31 @@ enum Cmd {
 struct Common {
     /// The Channel_list_*.zip exported from the TV.
     zip: PathBuf,
-    /// Channel map (TOML). Default: built-in Perth map.
+    /// Channel map (TOML), e.g. maps/perth.toml. Default: tvmap-out/channel-map.toml.
     #[arg(short, long, conflicts_with = "empty")]
     map: Option<PathBuf>,
-    /// Start from an empty map instead of the built-in one.
+    /// Start from an empty map.
     #[arg(long)]
     empty: bool,
 }
 
+/// Where `edit` saves the map, and where the map is read from if no `--map`.
+const DEFAULT_MAP: &str = "tvmap-out/channel-map.toml";
+
 impl Common {
     fn map(&self) -> Result<MapFile> {
-        Ok(match (&self.map, self.empty) {
-            (Some(p), _) => MapFile::load(p)?,
-            (None, true) => MapFile::default(),
-            (None, false) => MapFile::perth(),
-        })
+        if let Some(p) = &self.map {
+            return MapFile::load(p);
+        }
+        if self.empty {
+            return Ok(MapFile::default());
+        }
+        let p = Path::new(DEFAULT_MAP);
+        if !p.exists() {
+            bail!("no channel map: pass --map FILE (e.g. maps/perth.toml), or --empty to start from nothing");
+        }
+        eprintln!("using map {}", p.display());
+        MapFile::load(p)
     }
 
     fn plan(&self) -> Result<(Plan, MapFile)> {
@@ -187,7 +197,7 @@ fn run(cli: Cli) -> Result<()> {
         } => {
             let (plan, map) = common.plan()?;
             let out = output.unwrap_or_else(|| default_output(&common.zip));
-            let map_out = save_map.unwrap_or_else(|| PathBuf::from("tvmap-out/channel-map.toml"));
+            let map_out = save_map.unwrap_or_else(|| PathBuf::from(DEFAULT_MAP));
             tui::run(tui::Session {
                 zip: common.zip,
                 out,

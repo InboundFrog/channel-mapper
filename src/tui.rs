@@ -423,7 +423,11 @@ mod tests {
             out: dir.join("out.zip"),
             map_out: dir.join("map.toml"),
             region: None,
-            plan: Plan::build(services, &MapFile::perth()),
+            plan: Plan::build(
+                services,
+                &MapFile::load(&PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("maps/perth.toml"))
+                    .unwrap(),
+            ),
         })
     }
 
