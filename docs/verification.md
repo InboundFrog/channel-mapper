@@ -43,15 +43,19 @@ quit confirmation, and the problems-only filter.
 
 ## 3. CI on macOS and Linux
 
-GitHub Actions runs `fmt`, `clippy -D warnings`, the tests, and a CLI smoke
-test (list → apply → list with the saved map) on `ubuntu-latest` and
-`macos-latest`.
+CI uses the shared workflows from
+[repo-tools](https://github.com/InboundFrog/repo-tools), configured in
+`.github/repo-tools.conf`. On `ubuntu-latest` and `macos-latest` it runs
+`fmt`, `clippy -D warnings`, a release build, the tests, and a CLI smoke test
+(`ci/smoke.sh`: list → apply → list with the saved map), then uploads the
+binary and the smoke-test output. It also checks that the crate builds on its
+declared minimum Rust version (1.88), runs `cargo audit`, and lints
+`tools/freetv_maps.py` and the shell scripts.
 
-`ci/run.sh` wraps each step. If a step fails, it strips colour codes and
-build-progress lines and posts the compiler diagnostics as a GitHub
-annotation. Annotations can be read through the REST API
-(`/check-runs/{id}/annotations`) when the full job log can't be
-downloaded, as was the case from the sandbox used to build this.
+If a step fails, the workflow strips colour codes and build-progress lines
+and posts the diagnostics as a GitHub annotation. Annotations can be read
+through the REST API (`/check-runs/{id}/annotations`) when the full job log
+can't be downloaded, as was the case from the sandbox used to build this.
 
 ## 4. On the TV
 
