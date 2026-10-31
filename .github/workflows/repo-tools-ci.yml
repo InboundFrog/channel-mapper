@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   python:
-    uses: InboundFrog/repo-tools/.github/workflows/python.yml@claude/eloquent-davinci-i6x2ab-replace-workflows
+    uses: InboundFrog/repo-tools/.github/workflows/python.yml@main
     strategy:
       fail-fast: false
       matrix:
@@ -29,7 +29,7 @@ jobs:
       lint-command: 'uvx ruff check --output-format=github --target-version py311 .'
 
   rust:
-    uses: InboundFrog/repo-tools/.github/workflows/rust.yml@claude/eloquent-davinci-i6x2ab-replace-workflows
+    uses: InboundFrog/repo-tools/.github/workflows/rust.yml@main
     strategy:
       fail-fast: false
       matrix:
@@ -44,7 +44,7 @@ jobs:
       artifact-paths: 'target/release/tvmap tvmap-out/'
 
   shell:
-    uses: InboundFrog/repo-tools/.github/workflows/shell.yml@claude/eloquent-davinci-i6x2ab-replace-workflows
+    uses: InboundFrog/repo-tools/.github/workflows/shell.yml@main
     strategy:
       fail-fast: false
       matrix:
