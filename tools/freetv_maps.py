@@ -19,6 +19,7 @@ Needs Python 3.11+ and pdftotext (poppler-utils).
 
 import argparse
 import html
+import json
 import re
 import subprocess
 import sys
@@ -196,7 +197,7 @@ def build(stem, services, roles):
             for a, b in SWAP.get((stem, e["onid"]), []):
                 number = {a: b, b: a}.get(number, number)
         out.append(dict(e, name=name, number=number))
-    numbers = [e["number"] for e in out]
+    numbers = [e["number"] for e in out if e["number"] is not None]
     dup = sorted({n for n in numbers if numbers.count(n) > 1})
     if dup:
         sys.exit(f"{stem}: numbers used twice: {dup}")
@@ -243,10 +244,12 @@ def render(stem, issue, entries):
             mux = (e["onid"], e["tsid"])
             head = f"# --- {NETWORK.get(e['onid'], 'Other')} (onid {e['onid']}, tsid {e['tsid']}) "
             s += "\n" + head + "-" * max(3, 75 - len(head)) + "\n"
-        s += (
-            f"[[channel]]\nonid = {e['onid']}\ntsid = {e['tsid']}\nsid = {e['sid']}\n"
-            f'name = "{e["name"]}"\nnumber = {e["number"]}\n\n'
-        )
+        s += f"[[channel]]\nonid = {e['onid']}\ntsid = {e['tsid']}\nsid = {e['sid']}\n"
+        # JSON escapes (\" \\ \n \uXXXX) are valid in a TOML basic string.
+        s += f"name = {json.dumps(e['name'], ensure_ascii=False)}\n"
+        if e["number"] is not None:  # no number: keep whatever the TV has
+            s += f"number = {e['number']}\n"
+        s += "\n"
     return s.rstrip("\n") + "\n"
 
 
