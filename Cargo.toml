@@ -14,5 +14,5 @@ rusqlite = { version = "0.32", features = ["bundled"] }
 serde = { version = "1", features = ["derive"] }
 strsim = "0.11"
 tempfile = "3"
-toml = "0.8"
+toml = "1.1"
 zip = { version = "9", default-features = false, features = ["deflate"] }
