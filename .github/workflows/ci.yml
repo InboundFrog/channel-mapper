@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test
+      - name: Smoke test the CLI
+        run: |
+          cargo run --quiet -- list tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip
+          cargo run --quiet -- apply tests/fixtures/Channel_list_T-KTMDEUC-1410.1.zip -o tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --save-map tvmap-out/channel-map.toml
+          cargo run --quiet -- list tvmap-out/Channel_list_T-KTMDEUC-1410.1.zip --map tvmap-out/channel-map.toml
+      - run: cargo build --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tvmap-${{ matrix.os }}
+          path: |
+            target/release/tvmap
+            tvmap-out/

@@ -1,0 +1,432 @@
+# Perth (WA) free-to-air DVB-T services -> Australian logical channel numbers.
+#
+# Keyed on (onid, tsid, sid): original network ID, transport stream ID and
+# service ID. These come from the broadcast and survive a rescan. `name` is the
+# name the TV showed when this map was made; tvmap flags any service whose
+# current name differs a lot from it.
+#
+# Numbers taken from Wikipedia's "List of digital television channels in
+# Australia" (metropolitan tables), October 2026. Where a network sends the
+# same programme as several services (e.g. "7 Perth" x3), the lowest service
+# ID gets the main number. They're simulcasts, so a swap only changes which
+# copy you land on.
+#
+# Per channel:
+#   number = N      set the channel number (omit to keep whatever the TV has)
+#   hidden = true   remove from the channel list
+#   skip   = true   still reachable by typing the number, skipped by CH+/CH-
+
+region = "Perth, WA"
+
+# --- ABC (onid 12801, tsid 609) -------------------------------------------
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 737
+name = "ABC TV"
+number = 2
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 741
+name = "ABCTV HD"
+number = 20
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 739
+name = "ABC TV"
+number = 21
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 738
+name = "ABC Kids/ABC Family"
+number = 22
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 740
+name = "ABC Entertains"
+number = 23
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 736
+name = "ABC NEWS"
+number = 24
+
+# ABC radio
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 749
+name = "ABC PERTH"
+number = 25
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 750
+name = "ABC RN"
+number = 26
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 747
+name = "ABC Classic"
+number = 27
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 745
+name = "triple j"
+number = 28
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 746
+name = "triple j Unearthed"
+number = 29
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 742
+name = "Double J"
+number = 200
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 743
+name = "ABC Jazz"
+number = 201
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 744
+name = "ABC KIDS Listen"
+number = 202
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 748
+name = "ABC Country"
+number = 203
+
+[[channel]]
+onid = 12801
+tsid = 609
+sid = 751
+name = "ABC NewsRadio"
+number = 204
+
+# --- SBS (onid 12802, tsid 800) -------------------------------------------
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 801
+name = "SBS ONE"
+number = 3
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 805
+name = "SBS ONE HD"
+number = 30
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 806
+name = "SBS2"
+number = 31
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 807
+name = "SBS World Movies"
+number = 32
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 803
+name = "SBS Food"
+number = 33
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 809
+name = "NITV HD"
+number = 34
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 804
+name = "NITV"
+number = 36
+
+# SBS radio
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 817
+name = "SBS Radio 1"
+number = 301
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 818
+name = "SBS Radio 2"
+number = 302
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 819
+name = "SBS Radio 3"
+number = 303
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 820
+name = "SBS Arabic"
+number = 304
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 821
+name = "SBS South Asian"
+number = 305
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 822
+name = "SBS Chill"
+number = 306
+
+[[channel]]
+onid = 12802
+tsid = 800
+sid = 823
+name = "SBS PopAsia"
+number = 307
+
+# --- Seven Perth (onid 4115, tsid 1286) -----------------------------------
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1376
+name = "7 Perth"
+number = 7
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1377
+name = "7 Perth"
+number = 70
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1380
+name = "7 Perth"
+number = 71
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1378
+name = "7two Perth"
+number = 72
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1383
+name = "7mate Perth"
+number = 74
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1382
+name = "7Bravo Perth"
+number = 75
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1381
+name = "7flix Perth"
+number = 76
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1385
+name = "TVSN"
+number = 77
+
+[[channel]]
+onid = 4115
+tsid = 1286
+sid = 1384
+name = "RACING.COM"
+number = 78
+
+# --- Nine Perth (onid 4114, tsid 1120) ------------------------------------
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1122
+name = "9HD Perth"
+number = 9
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1126
+name = "9HD Perth"
+number = 90
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1121
+name = "Channel 9 Perth"
+number = 91
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1125
+name = "9GemHD Perth"
+number = 92
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1123
+name = "9Go!HD Perth"
+number = 93
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1124
+name = "9LifeHD Perth"
+number = 94
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1127
+name = "9GemHD Perth"
+number = 95
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1129
+name = "9Rush Perth"
+number = 96
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1130
+name = "Extra"
+number = 97
+
+[[channel]]
+onid = 4114
+tsid = 1120
+sid = 1128
+name = "9Go!HD Perth"
+number = 99
+
+# --- Ten Perth (onid 4116, tsid 1543) -------------------------------------
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1669
+name = "10"
+number = 1
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1665
+name = "10 HD"
+number = 10
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1672
+name = "10 comedy"
+number = 11
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1671
+name = "10 drama"
+number = 12
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1667
+name = "Nickelodeon"
+number = 13
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1666
+name = "10 HD +1"
+number = 14
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1668
+name = "10 HD"
+number = 15
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1670
+name = "you.tv"
+number = 16
+
+[[channel]]
+onid = 4116
+tsid = 1543
+sid = 1673
+name = "gecko"
+number = 17
