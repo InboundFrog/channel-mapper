@@ -1,0 +1,61 @@
+# CI via the reusable workflows in InboundFrog/repo-tools:
+# https://github.com/InboundFrog/repo-tools (its README lists every input).
+# The `uses:` lines pin a release by commit SHA, with the tag in a comment, so
+# Dependabot proposes each newer release. Keep the final "CI OK" job: it is the
+# one check branch protection requires.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    uses: InboundFrog/repo-tools/.github/workflows/python.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    with:
+      working-directory: .
+      # tools/freetv_maps.py needs Python 3.11+ (tomllib), so lint for that.
+      lint-command: uvx ruff check --output-format=github --target-version py311 .
+
+  # Build and test on both; the Python helper and ci/*.sh only need linting once.
+  rust:
+    uses: InboundFrog/repo-tools/.github/workflows/rust.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    with:
+      working-directory: .
+      runs-on: ${{ matrix.os }}
+      # Release build, CLI smoke test, then keep the binary and the smoke-test output.
+      build-command: cargo build --release --locked
+      extra-command: ci/smoke.sh
+      artifact-name: rust
+      artifact-paths: target/release/tvmap tvmap-out/
+
+  shell:
+    uses: InboundFrog/repo-tools/.github/workflows/shell.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    with:
+      working-directory: .
+
+  ci-ok:
+    name: CI OK
+    if: always()
+    needs: [python, rust, shell]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check job results
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          jq -r 'to_entries[] | "\(.key): \(.value.result)"' <<<"$NEEDS"
+          jq -e 'all(.[]; .result == "success" or .result == "skipped")' <<<"$NEEDS" >/dev/null

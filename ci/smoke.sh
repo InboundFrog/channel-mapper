@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CLI smoke test, run by CI after the tests (RUST_EXTRA in .github/repo-tools.conf):
+# CLI smoke test, run by CI after the tests (extra-command in .github/workflows/ci.yml):
 # list -> apply -> list with the saved map -> list falling back to the saved map.
 # Uses the release build from CI's build step; the output in tvmap-out/ is
 # uploaded as an artifact.
