@@ -44,8 +44,8 @@ quit confirmation, and the problems-only filter.
 ## 3. CI on macOS and Linux
 
 CI uses the shared workflows from
-[repo-tools](https://github.com/InboundFrog/repo-tools), configured in
-`.github/repo-tools.conf`. On `ubuntu-latest` and `macos-latest` it runs
+[repo-tools](https://github.com/InboundFrog/repo-tools), called from
+`.github/workflows/ci.yml`. On `ubuntu-latest` and `macos-latest` it runs
 `fmt`, `clippy -D warnings`, a release build, the tests, and a CLI smoke test
 (`ci/smoke.sh`: list → apply → list with the saved map), then uploads the
 binary and the smoke-test output. It also checks that the crate builds on its
