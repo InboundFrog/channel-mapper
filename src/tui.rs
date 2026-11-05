@@ -281,11 +281,14 @@ impl App {
             .filter(|r| r.status.needs_attention())
             .count();
         // Mode flags first, file name last: a narrow terminal cuts off the end.
-        let title =
-            format!(
+        let title = format!(
             " tvmap{}{}  {} services, {changed} changed, {attention} to check, {} conflicting  {}",
             if self.dirty { "  *unsaved*" } else { "" },
-            if self.only_attention { "  [problems only]" } else { "" },
+            if self.only_attention {
+                "  [problems only]"
+            } else {
+                ""
+            },
             plan.rows.len(),
             conflicts.len(),
             self.s.zip.file_name().unwrap_or_default().to_string_lossy(),
@@ -387,10 +390,11 @@ impl App {
 fn event_loop(term: &mut DefaultTerminal, app: &mut App) -> Result<()> {
     loop {
         term.draw(|f| app.draw(f))?;
-        if let Event::Key(k) = event::read()? {
-            if k.kind == KeyEventKind::Press && !app.key(k) {
-                return Ok(());
-            }
+        if let Event::Key(k) = event::read()?
+            && k.kind == KeyEventKind::Press
+            && !app.key(k)
+        {
+            return Ok(());
         }
     }
 }
@@ -406,8 +410,8 @@ pub fn run(session: Session) -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use ratatui::backend::TestBackend;
     use ratatui::Terminal;
+    use ratatui::backend::TestBackend;
     use tvmap::mapfile::MapFile;
 
     const FIXTURE: &str = concat!(

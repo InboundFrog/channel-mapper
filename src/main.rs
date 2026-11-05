@@ -1,4 +1,4 @@
-use anyhow::{bail, Result};
+use anyhow::{Result, bail};
 use clap::{Args, Parser, Subcommand};
 use std::path::{Path, PathBuf};
 use tvmap::mapfile::MapFile;
@@ -74,7 +74,9 @@ impl Common {
         }
         let p = Path::new(DEFAULT_MAP);
         if !p.exists() {
-            bail!("no channel map: pass --map FILE (e.g. maps/au/wa/perth.toml), or --empty to start from nothing");
+            bail!(
+                "no channel map: pass --map FILE (e.g. maps/au/wa/perth.toml), or --empty to start from nothing"
+            );
         }
         eprintln!("using map {}", p.display());
         MapFile::load(p)

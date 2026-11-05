@@ -10,7 +10,7 @@
 //!   through SQLite re-encodes it and corrupts the list.
 
 use anyhow::Result;
-use rusqlite::{params, Connection};
+use rusqlite::{Connection, params};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub struct ServiceKey {

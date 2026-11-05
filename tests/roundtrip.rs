@@ -347,10 +347,11 @@ fn ambiguous_name_fallback_is_left_unmatched() {
 #[test]
 fn empty_map_changes_nothing() {
     let plan = Plan::build(tvmap::load(&fixture()).unwrap().1, &MapFile::default());
-    assert!(plan
-        .rows
-        .iter()
-        .all(|r| r.status == Status::Unmatched && !r.is_changed()));
+    assert!(
+        plan.rows
+            .iter()
+            .all(|r| r.status == Status::Unmatched && !r.is_changed())
+    );
 }
 
 #[test]
