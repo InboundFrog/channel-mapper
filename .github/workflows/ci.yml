@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   python:
-    uses: InboundFrog/repo-tools/.github/workflows/python.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    uses: InboundFrog/repo-tools/.github/workflows/python.yml@11670fe8f6e9cddf7be79989e2da4ae48f399584 # v0.1.1
     with:
       working-directory: .
       # tools/freetv_maps.py needs Python 3.11+ (tomllib), so lint for that.
@@ -28,7 +28,7 @@ jobs:
 
   # Build and test on both; the Python helper and ci/*.sh only need linting once.
   rust:
-    uses: InboundFrog/repo-tools/.github/workflows/rust.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    uses: InboundFrog/repo-tools/.github/workflows/rust.yml@11670fe8f6e9cddf7be79989e2da4ae48f399584 # v0.1.1
     strategy:
       fail-fast: false
       matrix:
@@ -43,7 +43,7 @@ jobs:
       artifact-paths: target/release/tvmap tvmap-out/
 
   shell:
-    uses: InboundFrog/repo-tools/.github/workflows/shell.yml@bf24833e55abb4f21a6061c41f045efb4963181d # v0.1.0
+    uses: InboundFrog/repo-tools/.github/workflows/shell.yml@11670fe8f6e9cddf7be79989e2da4ae48f399584 # v0.1.1
     with:
       working-directory: .
 

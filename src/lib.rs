@@ -5,7 +5,7 @@ pub mod db;
 pub mod mapfile;
 pub mod plan;
 
-use anyhow::{bail, Result};
+use anyhow::{Result, bail};
 use archive::ChannelArchive;
 use db::Service;
 use plan::Plan;

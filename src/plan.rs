@@ -166,13 +166,13 @@ impl Plan {
             }
         }
         for r in &mut rows {
-            if let Status::MatchedByName { was } = r.status {
-                if claims[&was] > 1 {
-                    r.status = Status::Unmatched;
-                    r.number = None;
-                    r.hidden = r.svc.hidden;
-                    r.skip = r.svc.skip;
-                }
+            if let Status::MatchedByName { was } = r.status
+                && claims[&was] > 1
+            {
+                r.status = Status::Unmatched;
+                r.number = None;
+                r.hidden = r.svc.hidden;
+                r.skip = r.svc.skip;
             }
         }
 

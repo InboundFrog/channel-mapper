@@ -5,7 +5,7 @@
 //! database(s); every other entry is copied across as raw compressed bytes so
 //! it stays byte-identical.
 
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use rusqlite::{Connection, OpenFlags};
 use std::fs::File;
 use std::io::{Read, Write};
